@@ -9,7 +9,8 @@ const { hello, introText } = Astro.props;
 
 <section class="presentation-section">
   <div class="avatar-glow-container">
-    <div class="avatar-fallback">ab</div>
+    <img class="avatar-icon" src="https://avatars.githubusercontent.com/u/68083226">
+    <!-- <div class="avatar-fallback">ab</div> -->
   </div>
   <h1 class="welcome-text">{hello} <span class="gradient-text">adriabama06</span></h1>
   <p class="intro-paragraph">{introText}</p>
@@ -39,8 +40,8 @@ const { hello, introText } = Astro.props;
     background: linear-gradient(135deg, var(--color-repo), var(--color-timeline), var(--color-upc));
     border-radius: 50%;
     z-index: 0;
-    filter: blur(8px);
-    opacity: 0.8;
+    filter: blur(10px);
+    opacity: 0.4;
     animation: rotateGlow 10s linear infinite;
   }
 
@@ -49,7 +50,7 @@ const { hello, introText } = Astro.props;
     to { transform: rotate(360deg); }
   }
 
-  .avatar-fallback {
+  .avatar-icon {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -63,9 +64,9 @@ const { hello, introText } = Astro.props;
     font-size: 2.2rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: var(--text-main);
-    letter-spacing: -1px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    /* color: var(--text-main); */
+    /* letter-spacing: -1px; */
+    /* text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); */
   }
 
   .welcome-text {

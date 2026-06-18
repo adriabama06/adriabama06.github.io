@@ -21,22 +21,22 @@ export const repos: Repo[] = [
     title: "ffmpeg-version-manager",
     url: "https://github.com/adriabama06/ffmpeg-version-manager",
     image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
-    tags: ["Go / Rust / Bash", "CLI tool", "Multiplatform"],
+    tags: ["C++", "CLI/TUI tool", "Multiplatform"],
     descriptions: {
-      es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples binarios y optimizar flujos multimedia en desarrollo.",
-      en: "Install, switch, and uninstall FFmpeg versions in Windows and Linux instantly. A blazing-fast command-line utility built to handle multiple binaries and optimize multimedia development workflows.",
-      ca: "Instal·la, canvia i desinstal·la versions de FFmpeg a Windows i Linux instantàniament. Una eina de línia de comandes súper ràpida dissenyada per gestionar múltiples binaris i optimitzar fluxos de treball multimèdia."
+      es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples versiones de FFmpeg rápidamente.",
+      en: "Install, switch, and uninstall FFmpeg versions on Windows and Linux instantly. A super-fast command-line tool designed to manage multiple FFmpeg versions quickly.",
+      ca: "Instal·la, canvia i desinstal·la versions de FFmpeg a Windows i Linux de forma instantània. Una eina de línia d'ordres superràpida dissenyada per gestionar múltiples versions de FFmpeg ràpidament."
     }
   },
   {
     title: "auto-video-translator",
     url: "https://github.com/adriabama06/auto-video-translator",
     image: "https://i.ytimg.com/vi/nKUtm3Z_aVg/maxresdefault.jpg",
-    tags: ["Python", "AI / Whisper", "Local / OpenAI"],
+    tags: ["JavaScript", "TTS + STT", "Local / OpenAI-like API", "Docker"],
     descriptions: {
-      es: "Traduce y dobla el audio y subtítulos de tus vídeos utilizando inteligencia artificial al estilo de YouTube. Funciona de manera 100% local (para total privacidad) o bien integrado mediante la API oficial de OpenAI.",
-      en: "Translate and dub video audio and subtitles using AI in YouTube's style. Operates 100% locally for complete privacy, or fully integrated with OpenAI's official translation and speech synthesis APIs.",
-      ca: "Tradueix i dobla l'àudio i els subtítols dels teus vídeos fent servir intel·ligència artificial a l'estil de YouTube. Funciona de manera 100% local (per a privacitat total) o ben integrat amb l'API d'OpenAI."
+      es: "Traduce y dobla el audio y subtítulos de tus vídeos utilizando inteligencia artificial al estilo de YouTube. Funciona de manera 100% local (para total privacidad) o bien integrado mediante APIs compatibles tipo OpenAI.",
+      en: "Translate and dub the audio and subtitles of your videos using artificial intelligence, just like YouTube. It works 100% locally (for complete privacy) or can be integrated using compatible OpenAI-like APIs.",
+      ca: "Tradueix i doblega l'àudio i els subtítols dels teus vídeos utilitzant intel·ligència artificial a l'estil de YouTube. Funciona de manera 100% local (per a total privadesa) o bé integrat mitjançant APIs compatibles tipus OpenAI."
     }
   }
 ];
@@ -50,11 +50,11 @@ export const videos: Video[] = [
     },
     url: "https://www.youtube.com/watch?v=jY-ypkG8MZ8",
     image: "https://i.ytimg.com/vi/jY-ypkG8MZ8/maxresdefault.jpg",
-    tags: ["Tutorial", "FFmpeg 6.0+", "AV1 Encoding"],
+    tags: ["Tutorial", "FFmpeg", "AB-AV1", "AV1 Encoding"],
     descriptions: {
-      es: "Guía completa para instalar, compilar y configurar AB-AV1 junto con FFmpeg. Aprende paso a paso a exprimir el almacenamiento al máximo garantizando que tus vídeos retengan una fidelidad visual perfecta medida con VMAF.",
-      en: "Comprehensive guide to install, compile, and configure AB-AV1 along with FFmpeg. Learn step-by-step how to maximize storage savings while keeping a perfect visual quality verified by the VMAF metrics.",
-      ca: "Guia completa per instal·lar, compilar i configurar AB-AV1 amb FFmpeg. Aprèn pas a pas a esprémer l'emmagatzematge al màxim garantint que els vídeos mantinguin una fidelitat visual perfecta mesurada amb VMAF."
+      es: "Guía completa para instalar y usar AB-AV1 junto con FFmpeg. Aprende paso a paso a exprimir el almacenamiento al máximo garantizando que tus vídeos retengan una fidelidad visual perfecta medida con VMAF.",
+      en: "Comprehensive guide to install and use AB-AV1 along with FFmpeg. Learn step-by-step how to maximize storage savings while keeping a perfect visual quality verified by the VMAF metrics.",
+      ca: "Guia completa per instal·lar i fer servir AB-AV1 amb FFmpeg. Aprèn pas a pas a esprémer l'emmagatzematge al màxim garantint que els vídeos mantinguin una fidelitat visual perfecta mesurada amb VMAF."
     }
   },
   {
@@ -65,7 +65,7 @@ export const videos: Video[] = [
     },
     url: "https://www.youtube.com/watch?v=38jCys1ZvOw",
     image: "https://i.ytimg.com/vi/38jCys1ZvOw/maxresdefault.jpg",
-    tags: ["3D Reconstruction", "AI Graphics", "Cross-GPU"],
+    tags: ["3D Reconstruction", "AI Graphics", "Cross-GPU", "Docker"],
     descriptions: {
       es: "Domina la reconstrucción tridimensional fotorrealista a partir de capturas de vídeo convencionales. Guía práctica y detallada usando NerfStudio y Brush, con soporte para gráficas NVIDIA, AMD, Intel y procesadores de Mac.",
       en: "Master photorealistic 3D scene reconstruction starting from ordinary video clips. Hands-on detailed tutorial using NerfStudio and Brush, featuring full support for NVIDIA, AMD, Intel, and Apple Silicon Mac hardware.",

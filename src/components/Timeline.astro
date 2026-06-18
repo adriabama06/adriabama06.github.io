@@ -1,6 +1,8 @@
 ---
 interface Props {
   timelineTitle: string;
+  esoTitle: string;
+  esoDesc: string;
   batxTitle: string;
   batxDesc: string;
   upcTitle: string;
@@ -8,7 +10,7 @@ interface Props {
   futureText: string;
 }
 
-const { timelineTitle, batxTitle, batxDesc, upcTitle, upcDesc, futureText } = Astro.props;
+const { timelineTitle, esoTitle, esoDesc, batxTitle, batxDesc, upcTitle, upcDesc, futureText } = Astro.props;
 ---
 
 <section class="timeline-section">
@@ -16,6 +18,22 @@ const { timelineTitle, batxTitle, batxDesc, upcTitle, upcDesc, futureText } = As
   
   <div class="timeline-wrapper">
     
+    <div class="timeline-item">
+      <div class="timeline-bubble-container">
+        <div class="timeline-bubble bubble-eso">
+          <span class="bubble-icon">📚</span>
+        </div>
+      </div>
+      <div class="timeline-card">
+        <h3 class="timeline-card-title">{esoTitle}</h3>
+        <p class="timeline-card-desc">{esoDesc}</p>
+      </div>
+    </div>
+
+    <div class="timeline-connector-container">
+      <div class="timeline-line solid-gradient-line"></div>
+    </div>
+
     <div class="timeline-item">
       <div class="timeline-bubble-container">
         <div class="timeline-bubble bubble-batx">
@@ -127,6 +145,11 @@ const { timelineTitle, batxTitle, batxDesc, upcTitle, upcDesc, futureText } = As
 
   .bubble-icon {
     font-size: 1.4rem;
+  }
+
+  .bubble-eso {
+    border-color: var(--color-timeline);
+    box-shadow: 0 0 15px var(--color-timeline-glow);
   }
 
   .bubble-batx {

@@ -17,6 +17,8 @@ interface Props {
     hintText: string;
     seeMore: string;
     timelineTitle: string;
+    esoTitle: string;
+    esoDesc: string;
     batxTitle: string;
     batxDesc: string;
     upcTitle: string;
@@ -99,6 +101,8 @@ const { lang, t, repos, videos, getPath } = Astro.props;
 
 <Timeline
   timelineTitle={t.timelineTitle}
+  esoTitle={t.esoTitle}
+  esoDesc={t.esoDesc}
   batxTitle={t.batxTitle}
   batxDesc={t.batxDesc}
   upcTitle={t.upcTitle}

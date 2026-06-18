@@ -9,6 +9,8 @@ export const translations: Record<Lang, {
   visitRepo: string;
   watchVideo: string;
   timelineTitle: string;
+  esoTitle: string;
+  esoDesc: string;
   batxTitle: string;
   batxDesc: string;
   upcTitle: string;
@@ -39,10 +41,12 @@ export const translations: Record<Lang, {
     visitRepo: "Ver repositorio en GitHub",
     watchVideo: "Ver vídeo en YouTube",
     timelineTitle: "Mi Trayectoria",
+    esoTitle: "Educación Secundaria Obligatoria",
+    esoDesc: "Mi interés por los ordenadores empezó antes de la ESO y se mantuvo durante toda la etapa, dando lugar a mis primeros proyectos de programación. A los 14 años desarrollé un bot de música; a los 15, al comienzo de 4º de la ESO, creé un conversor de imágenes a ASCII programado en C puro, sin librerías externas (únicamente la librería estándar). Terminé el curso construyendo una estación meteorológica para mi instituto.",
     batxTitle: "Estudios de Bachillerato",
-    batxDesc: "Cursé la modalidad tecnológica y científica, construyendo sólidas bases en matemáticas, física y dando mis primeros pasos independientes en la programación y automatización.",
+    batxDesc: "Cursé la modalidad tecnológica, construyendo sólidas bases en matemáticas, física y puliendo mis habilidades en la programación y demostrando mis capacidades con mi trabajo de investigación.",
     upcTitle: "Grado en Ingeniería Informática (FIB - UPC)",
-    upcDesc: "Actualmente cursando mis estudios en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocado en la arquitectura de software de bajo nivel, algoritmos y sistemas operativos.",
+    upcDesc: "Actualmente cursando segundo año en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocado en la arquitectura de software de bajo nivel, algoritmos y sistemas operativos.",
     futureText: "...Y mucho más en el futuro",
     socialsTitle: "Conecta Conmigo",
     discordTooltip: "adriabama06 (Click para copiar)",
@@ -69,10 +73,12 @@ export const translations: Record<Lang, {
     visitRepo: "View repository on GitHub",
     watchVideo: "Watch video on YouTube",
     timelineTitle: "My Journey",
+    esoTitle: "Compulsory Secondary Education (ESO)",
+    esoDesc: "My interest in computers started before secondary school and continued throughout, leading to my first programming projects. At 14 I developed a music bot; at 15, at the beginning of 4th year of ESO, I created an image-to-ASCII converter programmed in pure C, with no external libraries (only the standard library). I finished the year by building a weather station for my school.",
     batxTitle: "High School (Tech & Science)",
-    batxDesc: "Completed the scientific and technical track, building strong foundations in mathematics, physics, and taking my first self-taught steps in programming and automation.",
+    batxDesc: "Completed the scientific and technical track, building strong foundations in mathematics, physics, and polishing my programming skills and demonstrating my abilities with my research project.",
     upcTitle: "B.S. in Computer Engineering (FIB - UPC)",
-    upcDesc: "Currently pursuing my degree at the Facultat d'Informàtica de Barcelona (FIB) of the Universitat Politècnica de Catalunya. Focused on low-level software design, algorithms, and operating systems.",
+    upcDesc: "Currently pursuing my second year at the Facultat d'Informàtica de Barcelona (FIB) of the Universitat Politècnica de Catalunya. Focused on low-level software architecture, algorithms, and operating systems.",
     futureText: "...And much more in the future",
     socialsTitle: "Connect With Me",
     discordTooltip: "adriabama06 (Click to copy)",
@@ -99,10 +105,12 @@ export const translations: Record<Lang, {
     visitRepo: "Veure repositori a GitHub",
     watchVideo: "Veure vídeo a YouTube",
     timelineTitle: "La meva Trajectòria",
+    esoTitle: "Educació Secundària Obligatòria (ESO)",
+    esoDesc: "El meu interès pels ordinadors va començar abans de l'ESO i es va mantenir durant tota l'etapa, donant lloc als meus primers projectes de programació. Als 14 anys vaig desenvolupar un bot de música; als 15, a l'inici de 4t de l'ESO, vaig crear un conversor d'imatges a ASCII programat en C pur, sense cap llibreria externa (només la llibreria estàndard). Vaig acabar el curs construint una estació meteorològica pel meu institut.",
     batxTitle: "Estudis de Batxillerat",
-    batxDesc: "Vaig cursar la modalitat tecnològica i científica, construint sòlides bases en matemàtiques, física i fent els meus primers passos autodidactes en la programació i automatització.",
+    batxDesc: "Vaig cursar la modalitat tecnològica, construint sòlides bases en matemàtiques, física i polint les meves habilitats en programació i demostrant les meves capacitats amb el meu treball d'investigació.",
     upcTitle: "Grau en Enginyeria Informàtica (FIB - UPC)",
-    upcDesc: "Actualment cursant els meus estudis a la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocat en l'arquitectura de programari de baix nivell, algoritmes i sistemes operatius.",
+    upcDesc: "Actualment cursant segon any a la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocat en l'arquitectura de programari de baix nivell, algoritmes i sistemes operatius.",
     futureText: "...I molt més en el futur",
     socialsTitle: "Connecta Amb Mi",
     discordTooltip: "adriabama06 (Fes clic per copiar)",
