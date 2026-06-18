@@ -5,6 +5,9 @@ on:
     branches: [ "main" ]   # change if you publish from another branch
 
 jobs:
+  deploy:
+    environment:
+      name: github-pages
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
