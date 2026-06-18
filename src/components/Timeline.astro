@@ -31,7 +31,7 @@ const { timelineTitle, esoTitle, esoDesc, batxTitle, batxDesc, upcTitle, upcDesc
     </div>
 
     <div class="timeline-connector-container">
-      <div class="timeline-line solid-gradient-line"></div>
+      <div class="timeline-line solid-normal-line"></div>
     </div>
 
     <div class="timeline-item">
@@ -251,6 +251,10 @@ const { timelineTitle, esoTitle, esoDesc, batxTitle, batxDesc, upcTitle, upcDesc
 
   .solid-gradient-line {
     background: linear-gradient(to bottom, var(--color-timeline) 0%, var(--color-upc) 100%);
+  }
+
+  .solid-normal-line {
+    background: var(--color-timeline);
   }
 
   .fading-gradient-line {
