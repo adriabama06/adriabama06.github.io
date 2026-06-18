@@ -16,7 +16,6 @@ export const translations: Record<Lang, {
   futureText: string;
   socialsTitle: string;
   discordTooltip: string;
-  discordCopied: string;
   linkedinFuture: string;
   emailTooltip: string;
   hintText: string;
@@ -47,7 +46,6 @@ export const translations: Record<Lang, {
     futureText: "...Y mucho más en el futuro",
     socialsTitle: "Conecta Conmigo",
     discordTooltip: "adriabama06 (Click para copiar)",
-    discordCopied: "¡Copiado!",
     linkedinFuture: "LinkedIn (Próximamente)",
     emailTooltip: "Enviarme un correo",
     hintText: "Click para ir al enlace • Ctrl+Click para pestaña nueva",
@@ -78,7 +76,6 @@ export const translations: Record<Lang, {
     futureText: "...And much more in the future",
     socialsTitle: "Connect With Me",
     discordTooltip: "adriabama06 (Click to copy)",
-    discordCopied: "Copied!",
     linkedinFuture: "LinkedIn (Coming soon)",
     emailTooltip: "Send me an email",
     hintText: "Click to open • Ctrl+Click to open in a new tab",
@@ -109,7 +106,6 @@ export const translations: Record<Lang, {
     futureText: "...I molt més en el futur",
     socialsTitle: "Connecta Amb Mi",
     discordTooltip: "adriabama06 (Fes clic per copiar)",
-    discordCopied: "Copiat!",
     linkedinFuture: "LinkedIn (Properament)",
     emailTooltip: "Enviar-me un correu",
     hintText: "Fes clic per anar a l'enllaç • Ctrl+Clic per a nova pestanya",
