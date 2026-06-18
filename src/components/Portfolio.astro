@@ -1,0 +1,1458 @@
+---
+interface Props {
+  lang: 'es' | 'en' | 'ca';
+  view?: 'home' | 'repositories' | 'videos';
+}
+
+const { lang, view = 'home' } = Astro.props;
+
+const translations = {
+  es: {
+    metaTitle: "adriabama06 | Portafolio",
+    hello: "¡Hola! Soy",
+    introText: "Desarrollador de software, estudiante de ingeniería informática y creador de contenido. Me apasiona construir herramientas de código abierto útiles y eficientes, optimizar flujos multimedia e IA, y compartir tutoriales técnicos en mi canal de YouTube para ayudar a otros desarrolladores y entusiastas.",
+    reposTitle: "Repositorios destacados",
+    videosTitle: "Vídeos destacados",
+    visitRepo: "Ver repositorio en GitHub",
+    watchVideo: "Ver vídeo en YouTube",
+    timelineTitle: "Mi Trayectoria",
+    batxTitle: "Estudios de Bachillerato",
+    batxDesc: "Cursé la modalidad tecnológica y científica, construyendo sólidas bases en matemáticas, física y dando mis primeros pasos independientes en la programación y automatización.",
+    upcTitle: "Grado en Ingeniería Informática (FIB - UPC)",
+    upcDesc: "Actualmente cursando mis estudios en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocado en la arquitectura de software de bajo nivel, algoritmos y sistemas operativos.",
+    futureText: "...Y mucho más en el futuro",
+    socialsTitle: "Conecta Conmigo",
+    discordTooltip: "adriabama06 (Click para copiar)",
+    discordCopied: "¡Copiado!",
+    linkedinFuture: "LinkedIn (Próximamente)",
+    emailTooltip: "Enviarme un correo",
+    hintText: "Click para ir al enlace • Ctrl+Click para pestaña nueva",
+    navHome: "Inicio",
+    navRepos: "Repositorios",
+    navVideos: "YouTube",
+    seeMore: "Ver más...",
+    reposPageTitle: "Mis Repositorios",
+    reposPageDesc: "Una selección de herramientas, utilidades de línea de comandos y proyectos de código abierto.",
+    videosPageTitle: "Vídeos en YouTube",
+    videosPageDesc: "Tutoriales técnicos especializados sobre optimización multimedia, códecs, inteligencia artificial y gráficos 3D.",
+    backToHome: "← Volver al inicio",
+    emailSubject: "Contacto desde tu portafolio",
+  },
+  en: {
+    metaTitle: "adriabama06 | Portfolio",
+    hello: "Hi! I'm",
+    introText: "Software developer, computer engineering student, and content creator. I am passionate about building useful and efficient open-source tools, optimizing multimedia workflows and AI pipelines, and sharing technical tutorials on YouTube to empower other developers and tech enthusiasts.",
+    reposTitle: "Featured repositories",
+    videosTitle: "Featured videos",
+    visitRepo: "View repository on GitHub",
+    watchVideo: "Watch video on YouTube",
+    timelineTitle: "My Journey",
+    batxTitle: "High School (Tech & Science)",
+    batxDesc: "Completed the scientific and technical track, building strong foundations in mathematics, physics, and taking my first self-taught steps in programming and automation.",
+    upcTitle: "B.S. in Computer Engineering (FIB - UPC)",
+    upcDesc: "Currently pursuing my degree at the Facultat d'Informàtica de Barcelona (FIB) of the Universitat Politècnica de Catalunya. Focused on low-level software design, algorithms, and operating systems.",
+    futureText: "...And much more in the future",
+    socialsTitle: "Connect With Me",
+    discordTooltip: "adriabama06 (Click to copy)",
+    discordCopied: "Copied!",
+    linkedinFuture: "LinkedIn (Coming soon)",
+    emailTooltip: "Send me an email",
+    hintText: "Click to open • Ctrl+Click to open in a new tab",
+    navHome: "Home",
+    navRepos: "Repositories",
+    navVideos: "YouTube",
+    seeMore: "See more...",
+    reposPageTitle: "My Repositories",
+    reposPageDesc: "A curated collection of developer tools, command-line utilities, and open-source software.",
+    videosPageTitle: "YouTube Videos",
+    videosPageDesc: "Specialized tech tutorials covering media compression, codecs, AI reconstructions, and graphics.",
+    backToHome: "← Back to home",
+    emailSubject: "Contact from portfolio",
+  },
+  ca: {
+    metaTitle: "adriabama06 | Portafoli",
+    hello: "Hola! Sóc",
+    introText: "Desenvolupador de programari, estudiant d'enginyeria informàtica i creador de contingut. Em fascina construir eines útils i eficients de codi obert, optimitzar fluxos de treball multimèdia i IA, i compartir tutorials tecnològics al meu canal de YouTube per ajudar a altres desenvolupadors i entusiastes.",
+    reposTitle: "Repositoris destacats",
+    videosTitle: "Vídeos destacats",
+    visitRepo: "Veure repositori a GitHub",
+    watchVideo: "Veure vídeo a YouTube",
+    timelineTitle: "La meva Trajectòria",
+    batxTitle: "Estudis de Batxillerat",
+    batxDesc: "Vaig cursar la modalitat tecnològica i científica, construint sòlides bases en matemàtiques, física i fent els meus primers passos autodidactes en la programació i automatització.",
+    upcTitle: "Grau en Enginyeria Informàtica (FIB - UPC)",
+    upcDesc: "Actualment cursant els meus estudis a la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Enfocat en l'arquitectura de programari de baix nivell, algoritmes i sistemes operatius.",
+    futureText: "...I molt més en el futur",
+    socialsTitle: "Connecta Amb Mi",
+    discordTooltip: "adriabama06 (Fes clic per copiar)",
+    discordCopied: "Copiat!",
+    linkedinFuture: "LinkedIn (Properament)",
+    emailTooltip: "Enviar-me un correu",
+    hintText: "Fes clic per anar a l'enllaç • Ctrl+Clic per a nova pestanya",
+    navHome: "Inici",
+    navRepos: "Repositoris",
+    navVideos: "YouTube",
+    seeMore: "Veure més...",
+    reposPageTitle: "Els Meus Repositoris",
+    reposPageDesc: "Una col·lecció d'eines de desenvolupador, utilitats de línia de comandes i programari de codi obert.",
+    videosPageTitle: "Vídeos a YouTube",
+    videosPageDesc: "Tutorials tècnics especialitzats sobre compressió multimèdia, còdecs, reconstrucció en 3D i IA.",
+    backToHome: "← Tornar a l'inici",
+    emailSubject: "Contacte des del teu portafoli",
+  }
+};
+
+const t = translations[lang];
+
+const repos = [
+  {
+    title: "ffmpeg-version-manager",
+    url: "https://github.com/adriabama06/ffmpeg-version-manager",
+    image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
+    tags: ["Go / Rust / Bash", "CLI tool", "Multiplatform"],
+    descriptions: {
+      es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples binarios y optimizar flujos multimedia en desarrollo.",
+      en: "Install, switch, and uninstall FFmpeg versions in Windows and Linux instantly. A blazing-fast command-line utility built to handle multiple binaries and optimize multimedia development workflows.",
+      ca: "Instal·la, canvia i desinstal·la versions de FFmpeg a Windows i Linux instantàniament. Una eina de línia de comandes súper ràpida dissenyada per gestionar múltiples binaris i optimitzar fluxos de treball multimèdia."
+    }
+  },
+  {
+    title: "auto-video-translator",
+    url: "https://github.com/adriabama06/auto-video-translator",
+    image: "https://i.ytimg.com/vi/nKUtm3Z_aVg/maxresdefault.jpg",
+    tags: ["Python", "AI / Whisper", "Local / OpenAI"],
+    descriptions: {
+      es: "Traduce y dobla el audio y subtítulos de tus vídeos utilizando inteligencia artificial al estilo de YouTube. Funciona de manera 100% local (para total privacidad) o bien integrado mediante la API oficial de OpenAI.",
+      en: "Translate and dub video audio and subtitles using AI in YouTube's style. Operates 100% locally for complete privacy, or fully integrated with OpenAI's official translation and speech synthesis APIs.",
+      ca: "Tradueix i dobla l'àudio i els subtítols dels teus vídeos fent servir intel·ligència artificial a l'estil de YouTube. Funciona de manera 100% local (per a privacitat total) o ben integrat amb l'API d'OpenAI."
+    }
+  }
+];
+
+const videos = [
+  {
+    title: {
+      es: "Cómo comprimir vídeos sin perder calidad con VMAF y AB-AV1",
+      en: "How to Compress Videos Without Quality Loss Using VMAF & AB-AV1",
+      ca: "Com comprimir vídeos sense perdre qualitat amb VMAF i AB-AV1"
+    },
+    url: "https://www.youtube.com/watch?v=jY-ypkG8MZ8",
+    image: "https://i.ytimg.com/vi/jY-ypkG8MZ8/maxresdefault.jpg",
+    tags: ["Tutorial", "FFmpeg 6.0+", "AV1 Encoding"],
+    descriptions: {
+      es: "Guía completa para instalar, compilar y configurar AB-AV1 junto con FFmpeg. Aprende paso a paso a exprimir el almacenamiento al máximo garantizando que tus vídeos retengan una fidelidad visual perfecta medida con VMAF.",
+      en: "Comprehensive guide to install, compile, and configure AB-AV1 along with FFmpeg. Learn step-by-step how to maximize storage savings while keeping a perfect visual quality verified by the VMAF metrics.",
+      ca: "Guia completa per instal·lar, compilar i configurar AB-AV1 amb FFmpeg. Aprèn pas a pas a esprémer l'emmagatzematge al màxim garantint que els vídeos mantinguin una fidelitat visual perfecta mesurada amb VMAF."
+    }
+  },
+  {
+    title: {
+      es: "Tutorial de Gaussian Splatting / NeRF con NerfStudio + Brush",
+      en: "Complete Gaussian Splatting / NeRF Tutorial using NerfStudio + Brush",
+      ca: "Tutorial de Gaussian Splatting / NeRF amb NerfStudio + Brush"
+    },
+    url: "https://www.youtube.com/watch?v=38jCys1ZvOw",
+    image: "https://i.ytimg.com/vi/38jCys1ZvOw/maxresdefault.jpg",
+    tags: ["3D Reconstruction", "AI Graphics", "Cross-GPU"],
+    descriptions: {
+      es: "Domina la reconstrucción tridimensional fotorrealista a partir de capturas de vídeo convencionales. Guía práctica y detallada usando NerfStudio y Brush, con soporte para gráficas NVIDIA, AMD, Intel y procesadores de Mac.",
+      en: "Master photorealistic 3D scene reconstruction starting from ordinary video clips. Hands-on detailed tutorial using NerfStudio and Brush, featuring full support for NVIDIA, AMD, Intel, and Apple Silicon Mac hardware.",
+      ca: "Domina la reconstrucció tridimensional fotorealista a partir d'imatges o vídeos. Guia pràctica i detallada utilitzant NerfStudio i Brush, amb suport complet per a gràfiques NVIDIA, AMD, Intel i Macs."
+    }
+  }
+];
+
+// Localized Path helper
+const getPath = (path: string) => {
+  if (lang === 'es') {
+    return path === '' ? '/' : `/${path}`;
+  }
+  return path === '' ? `/${lang}` : `/${lang}/${path}`;
+};
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{t.metaTitle}</title>
+  
+  <style is:global>
+    /* Global Reset and CSS Variables */
+    :root {
+      --bg-dark: #070913;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --color-repo: #3b82f6;
+      --color-repo-glow: rgba(59, 130, 246, 0.45);
+      --color-video: #ef4444;
+      --color-video-glow: rgba(239, 68, 68, 0.45);
+      --color-timeline: #a855f7;
+      --color-timeline-glow: rgba(168, 85, 247, 0.4);
+      --color-upc: #0ea5e9;
+      --color-upc-glow: rgba(14, 165, 233, 0.4);
+      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      /* Grid techy background */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.004) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.004) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="nav-links">
+        <a href={getPath('')} class={`nav-item ${view === 'home' ? 'active' : ''}`} aria-label="Home">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span class="nav-text">{t.navHome}</span>
+        </a>
+        <a href={getPath('repositories')} class={`nav-item ${view === 'repositories' ? 'active' : ''}`} aria-label="Repositories">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          </svg>
+          <span class="nav-text">{t.navRepos}</span>
+        </a>
+        <a href={getPath('videos')} class={`nav-item ${view === 'videos' ? 'active' : ''}`} aria-label="YouTube">
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25a29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+          <span class="nav-text">{t.navVideos}</span>
+        </a>
+      </div>
+      
+      <!-- Language Switcher in Nav -->
+      <div class="lang-switcher">
+        <a href={view === 'home' ? '/' : (view === 'repositories' ? '/repositories' : '/videos')} class={`lang-btn ${lang === 'es' ? 'active' : ''}`}>ES</a>
+        <a href={view === 'home' ? '/en' : (view === 'repositories' ? '/en/repositories' : '/en/videos')} class={`lang-btn ${lang === 'en' ? 'active' : ''}`}>EN</a>
+        <a href={view === 'home' ? '/ca' : (view === 'repositories' ? '/ca/repositories' : '/ca/videos')} class={`lang-btn ${lang === 'ca' ? 'active' : ''}`}>CA</a>
+      </div>
+    </nav>
+
+    <!-- VIEW: HOME -->
+    {view === 'home' && (
+      <>
+        <!-- Presentation Section -->
+        <section class="presentation-section">
+          <div class="avatar-glow-container">
+            <div class="avatar-fallback">ab</div>
+          </div>
+          <h1 class="welcome-text">{t.hello} <span class="gradient-text">adriabama06</span></h1>
+          <p class="intro-paragraph">{t.introText}</p>
+        </section>
+
+        <!-- Highlighted Elements Grid (Repos Left, Videos Right) -->
+        <section class="grid-section">
+          <div class="main-grid">
+            
+            <!-- Left Column: Repos -->
+            <div class="column">
+              <div class="column-header-container">
+                <svg class="col-icon repo-col-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                <h2 class="column-title">{t.reposTitle}</h2>
+              </div>
+              
+              <div class="cards-list">
+                {repos.map(repo => (
+                  <a href={repo.url} class="card repo-card" aria-label={t.visitRepo}>
+                    <div class="card-image-wrapper">
+                      <img src={repo.image} alt={repo.title} class="card-image" loading="lazy" />
+                      <div class="card-badge repo-badge">GitHub</div>
+                    </div>
+                    <div class="card-content">
+                      <h3 class="card-title">{repo.title}</h3>
+                      <div class="tags-container">
+                        {repo.tags.map(tag => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                      <p class="card-desc">{repo.descriptions[lang]}</p>
+                      <div class="card-hint">
+                        <span>{t.hintText}</span>
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              
+              <!-- Ver más button -->
+              <div class="see-more-container">
+                <a href={getPath('repositories')} class="see-more-btn repo-see-more">
+                  <span>{t.seeMore}</span>
+                  <svg class="arrow-icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Column: Videos -->
+            <div class="column">
+              <div class="column-header-container">
+                <svg class="col-icon video-col-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25a29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                <h2 class="column-title">{t.videosTitle}</h2>
+              </div>
+
+              <div class="cards-list">
+                {videos.map(video => (
+                  <a href={video.url} class="card video-card" aria-label={t.watchVideo}>
+                    <div class="card-image-wrapper">
+                      <img src={video.image} alt={video.title[lang]} class="card-image" loading="lazy" />
+                      <div class="card-badge video-badge">YouTube</div>
+                    </div>
+                    <div class="card-content">
+                      <h3 class="card-title">{video.title[lang]}</h3>
+                      <div class="tags-container">
+                        {video.tags.map(tag => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                      <p class="card-desc">{video.descriptions[lang]}</p>
+                      <div class="card-hint">
+                        <span>{t.hintText}</span>
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              
+              <!-- Ver más button -->
+              <div class="see-more-container">
+                <a href={getPath('videos')} class="see-more-btn video-see-more">
+                  <span>{t.seeMore}</span>
+                  <svg class="arrow-icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Road Map / Timeline Section -->
+        <section class="timeline-section">
+          <h2 class="timeline-section-title">{t.timelineTitle}</h2>
+          
+          <div class="timeline-wrapper">
+            
+            <!-- Node 1: Bachillerato -->
+            <div class="timeline-item">
+              <div class="timeline-bubble-container">
+                <div class="timeline-bubble bubble-batx">
+                  <span class="bubble-icon">🎓</span>
+                </div>
+              </div>
+              <div class="timeline-card">
+                <h3 class="timeline-card-title">{t.batxTitle}</h3>
+                <p class="timeline-card-desc">{t.batxDesc}</p>
+              </div>
+            </div>
+
+            <!-- Solid Line Connector 1 to 2 -->
+            <div class="timeline-connector-container">
+              <div class="timeline-line solid-gradient-line"></div>
+            </div>
+
+            <!-- Node 2: UPC (FIB) -->
+            <div class="timeline-item">
+              <div class="timeline-bubble-container">
+                <div class="timeline-bubble bubble-upc">
+                  <span class="bubble-icon">💻</span>
+                </div>
+              </div>
+              <div class="timeline-card highlighted-timeline-card">
+                <div class="live-pulse"></div>
+                <h3 class="timeline-card-title">{t.upcTitle}</h3>
+                <p class="timeline-card-desc">{t.upcDesc}</p>
+              </div>
+            </div>
+
+            <!-- Fading Line Connector 2 to future -->
+            <div class="timeline-connector-container">
+              <div class="timeline-line fading-gradient-line"></div>
+            </div>
+
+            <!-- Node 3: Future -->
+            <div class="timeline-item future-item">
+              <div class="timeline-bubble-container">
+                <div class="timeline-bubble bubble-future">
+                  <span class="bubble-icon">🚀</span>
+                </div>
+              </div>
+              <div class="timeline-future-text">
+                {t.futureText}
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </>
+    )}
+
+    <!-- VIEW: REPOSITORIES -->
+    {view === 'repositories' && (
+      <section class="subpage-section">
+        <div class="subpage-header">
+          <h1 class="welcome-text"><span class="gradient-text">{t.reposPageTitle}</span></h1>
+          <p class="intro-paragraph">{t.reposPageDesc}</p>
+        </div>
+        
+        <!-- Displayed in pairs (2x2 or side-by-side in columns) as requested -->
+        <div class="subpage-grid">
+          {repos.map(repo => (
+            <a href={repo.url} class="card repo-card" aria-label={t.visitRepo}>
+              <div class="card-image-wrapper">
+                <img src={repo.image} alt={repo.title} class="card-image" loading="lazy" />
+                <div class="card-badge repo-badge">GitHub</div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{repo.title}</h3>
+                <div class="tags-container">
+                  {repo.tags.map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                <p class="card-desc">{repo.descriptions[lang]}</p>
+                <div class="card-hint">
+                  <span>{t.hintText}</span>
+                  <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="back-link-container">
+          <a href={getPath('')} class="back-to-home-link">{t.backToHome}</a>
+        </div>
+      </section>
+    )}
+
+    <!-- VIEW: VIDEOS -->
+    {view === 'videos' && (
+      <section class="subpage-section">
+        <div class="subpage-header">
+          <h1 class="welcome-text"><span class="gradient-text">{t.videosPageTitle}</span></h1>
+          <p class="intro-paragraph">{t.videosPageDesc}</p>
+        </div>
+        
+        <!-- Displayed in pairs (2-column layout) as requested -->
+        <div class="subpage-grid">
+          {videos.map(video => (
+            <a href={video.url} class="card video-card" aria-label={t.watchVideo}>
+              <div class="card-image-wrapper">
+                <img src={video.image} alt={video.title[lang]} class="card-image" loading="lazy" />
+                <div class="card-badge video-badge">YouTube</div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{video.title[lang]}</h3>
+                <div class="tags-container">
+                  {video.tags.map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                <p class="card-desc">{video.descriptions[lang]}</p>
+                <div class="card-hint">
+                  <span>{t.hintText}</span>
+                  <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="back-link-container">
+          <a href={getPath('')} class="back-to-home-link">{t.backToHome}</a>
+        </div>
+      </section>
+    )}
+
+    <!-- Social Media Section with Beautiful Icons -->
+    <footer class="socials-section">
+      <h2 class="socials-title">{t.socialsTitle}</h2>
+      
+      <div class="socials-grid">
+        <!-- GitHub -->
+        <a href="https://github.com/adriabama06" class="social-btn github-btn" target="_blank" rel="noopener noreferrer">
+          <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          <span class="social-label">GitHub</span>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@adriabama06" class="social-btn youtube-btn" target="_blank" rel="noopener noreferrer">
+          <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25a29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          <span class="social-label">YouTube</span>
+        </a>
+
+        <!-- Discord (Click to Copy) -->
+        <button id="discord-copy-btn" class="social-btn discord-btn" data-tooltip={t.discordTooltip} data-copied={t.discordCopied} aria-label="Copy Discord username">
+          <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" fill="currentColor">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.72-11,68.6,68.6,0,0,1-10.64-5.12c.91-.67,1.81-1.37,2.67-2.1a75.22,75.22,0,0,0,72.71,0c.87.73,1.76,1.43,2.67,2.1a68.86,68.86,0,0,1-10.64,5.12,74.74,74.74,0,0,0,6.72,11,105.73,105.73,0,0,0,31-18.83C129.24,48.72,123.34,25.94,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.9,46,53.77,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.14,46,96,53,91,65.69,84.69,65.69Z"/>
+          </svg>
+          <span class="social-label" id="discord-label">Discord</span>
+        </button>
+
+        <!-- LinkedIn (Coming soon / Future) -->
+        <div class="social-btn linkedin-btn disabled-btn" title={t.linkedinFuture}>
+          <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <span class="social-label">{t.linkedinFuture}</span>
+        </div>
+
+        <!-- Email -->
+        <a href={`mailto:adriabama06@gmail.com?subject=${encodeURIComponent(t.emailSubject)}`} class="social-btn email-btn" title={t.emailTooltip}>
+          <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span class="social-label">Email</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Client-side script for copy-to-clipboard -->
+  <script>
+    const copyBtn = document.getElementById('discord-copy-btn');
+    const label = document.getElementById('discord-label');
+    
+    if (copyBtn && label) {
+      const originalText = label.textContent || 'Discord';
+      const tooltipText = copyBtn.getAttribute('data-tooltip') || 'adriabama06';
+      const copiedText = copyBtn.getAttribute('data-copied') || 'Copied!';
+      
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('adriabama06');
+          label.textContent = copiedText;
+          copyBtn.classList.add('copied');
+          
+          setTimeout(() => {
+            label.textContent = originalText;
+            copyBtn.classList.remove('copied');
+          }, 2500);
+        } catch (err) {
+          console.error('Could not copy text: ', err);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style>
+  /* Local Scoped Component Styles */
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
+  }
+
+  /* Navigation Bar styling */
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    background: rgba(11, 15, 30, 0.7);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 9999px;
+    margin-bottom: 3.5rem;
+    position: sticky;
+    top: 1.25rem;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.3s ease;
+  }
+
+  .nav-bar:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1.1rem;
+    border-radius: 9999px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-icon {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.5;
+  }
+
+  .nav-item:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-item.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Language Switcher inside Navbar */
+  .lang-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.2rem;
+    border-radius: 9999px;
+  }
+
+  .lang-btn {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn:hover {
+    color: var(--text-main);
+  }
+
+  .lang-btn.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+  }
+
+  /* Presentation / Hero Section */
+  .presentation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .avatar-glow-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-glow-container::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(135deg, var(--color-repo), var(--color-timeline), var(--color-upc));
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(8px);
+    opacity: 0.8;
+    animation: rotateGlow 10s linear infinite;
+  }
+
+  @keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .avatar-fallback {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: #111827;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-main);
+    letter-spacing: -1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  .welcome-text {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa 10%, #c084fc 50%, #38bdf8 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .intro-paragraph {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-wrap: balance;
+  }
+
+  /* Grid Layout (2 columns: Repos Left, Videos Right) */
+  .grid-section {
+    margin-bottom: 5rem;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: stretch; /* Stretch columns to have identical height */
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Column takes full grid height */
+  }
+
+  .column-header-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.75rem;
+  }
+
+  .col-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .repo-col-icon {
+    color: var(--color-repo);
+    filter: drop-shadow(0 0 6px var(--color-repo-glow));
+  }
+
+  .video-col-icon {
+    color: var(--color-video);
+    filter: drop-shadow(0 0 6px var(--color-video-glow));
+  }
+
+  .column-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* 
+    CARDS MATCHING SIZES STRATEGY:
+    Using grid template with 1fr 1fr allows Card 1 and Card 2 in BOTH columns
+    to align and stretch to the exact largest height!
+  */
+  .cards-list {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.75rem;
+    flex-grow: 1; /* Stretch to occupy the full column */
+  }
+
+  /* Card Component Styling */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    
+    transform: translate3d(0, 0, 0);
+    outline: 1px solid transparent;
+    backface-visibility: hidden;
+    transition: 
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+      border-color 0.4s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Stretch card to match parent grid cell */
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+
+  /* Specific color variables on cards */
+  .repo-card {
+    --accent: var(--color-repo);
+    --glow: var(--color-repo-glow);
+  }
+
+  .video-card {
+    --accent: var(--color-video);
+    --glow: var(--color-video-glow);
+  }
+
+  .card:hover {
+    transform: translate3d(0, -8px, 0) scale3d(1.02, 1.02, 1) rotate3d(0, 0, 1, 0.4deg);
+    border-color: var(--accent);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.45), 
+      0 0 25px var(--glow);
+    z-index: 2;
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.05);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .repo-badge {
+    background: #2563eb;
+  }
+
+  .video-badge {
+    background: #dc2626;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Stretch card content vertically */
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-title {
+    color: var(--accent);
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1; /* Push the hint footer to the bottom */
+  }
+
+  .card-hint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.75rem;
+    margin-top: auto;
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-hint {
+    color: var(--accent);
+  }
+
+  .arrow-icon {
+    width: 14px;
+    height: 14px;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .arrow-icon {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  /* "Ver más..." Buttons */
+  .see-more-container {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .see-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .arrow-icon-btn {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .see-more-btn:hover {
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .see-more-btn:hover .arrow-icon-btn {
+    transform: translateX(4px);
+  }
+
+  .repo-see-more:hover {
+    border-color: var(--color-repo);
+    background: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  }
+
+  .video-see-more:hover {
+    border-color: var(--color-video);
+    background: rgba(239, 68, 68, 0.05);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+  }
+
+  /* SUBPAGES SECTION (Repositories & Videos Subpages) */
+  .subpage-section {
+    padding-bottom: 4rem;
+  }
+
+  .subpage-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Grid displaying cards in pairs (2x2 or side-by-side) */
+  .subpage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch; /* Keep cards in the same row identical in size */
+  }
+
+  .back-link-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .back-to-home-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: color 0.2s ease;
+  }
+
+  .back-to-home-link:hover {
+    color: var(--text-main);
+  }
+
+  /* Roadmap / Timeline Section */
+  .timeline-section {
+    margin-bottom: 6rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .timeline-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-timeline), transparent);
+  }
+
+  .timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .timeline-bubble-container {
+    margin-bottom: 1rem;
+    z-index: 10;
+  }
+
+  .timeline-bubble {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #111827;
+    border: 3px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .bubble-icon {
+    font-size: 1.4rem;
+  }
+
+  /* Glowing effects for timeline nodes */
+  .bubble-batx {
+    border-color: var(--color-timeline);
+    box-shadow: 0 0 15px var(--color-timeline-glow);
+  }
+
+  .bubble-upc {
+    border-color: var(--color-upc);
+    box-shadow: 0 0 15px var(--color-upc-glow);
+  }
+
+  .bubble-future {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.8);
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+
+  .timeline-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.25rem 1.75rem;
+    max-width: 500px;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .timeline-card:hover {
+    transform: scale(1.02);
+  }
+
+  .highlighted-timeline-card {
+    border-color: rgba(14, 165, 233, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlighted-timeline-card:hover {
+    border-color: var(--color-upc);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+  }
+
+  /* Live study pulse indicator */
+  .live-pulse {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-upc);
+    border-radius: 50%;
+  }
+
+  .live-pulse::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-upc);
+    border-radius: 50%;
+    animation: pulseGlow 1.8s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+  }
+
+  .timeline-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* Connector lines between bubbles */
+  .timeline-connector-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 60px; /* spacing between nodes */
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-line {
+    width: 3px;
+    height: 100%;
+  }
+
+  /* Line 1: solid gradient */
+  .solid-gradient-line {
+    background: linear-gradient(to bottom, var(--color-timeline) 0%, var(--color-upc) 100%);
+  }
+
+  /* Line 2: fading gradient requested */
+  .fading-gradient-line {
+    background: linear-gradient(to bottom, var(--color-upc) 0%, rgba(14, 165, 233, 0) 100%);
+  }
+
+  /* Node 3: Future layout */
+  .future-item {
+    opacity: 0.85;
+  }
+
+  .timeline-future-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--text-muted) 30%, rgba(255, 255, 255, 0.3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shineText 3s infinite alternate;
+  }
+
+  @keyframes shineText {
+    from { opacity: 0.7; }
+    to { opacity: 1; filter: drop-shadow(0 0 1px rgba(255,255,255,0.1)); }
+  }
+
+  /* Social Footer */
+  .socials-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socials-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .socials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /* Social Button Component */
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .social-svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Social Button Hover Effects */
+  .social-btn:hover {
+    color: var(--text-main);
+    transform: translateY(-3px);
+  }
+
+  .social-btn:hover .social-svg {
+    transform: scale(1.15);
+  }
+
+  /* Custom tooltips */
+  .social-btn[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  .social-btn[data-tooltip]:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Specific colors on hover */
+  .github-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #f3f4f6;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+  }
+
+  .youtube-btn:hover {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: #ef4444;
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.08);
+  }
+
+  .discord-btn {
+    border: 1px solid var(--border-color);
+  }
+
+  .discord-btn:hover {
+    background: rgba(88, 101, 242, 0.05);
+    border-color: #5865f2;
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.08);
+  }
+
+  .discord-btn.copied {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+
+  .email-btn:hover {
+    background: rgba(14, 165, 233, 0.05);
+    border-color: #0ea5e9;
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.08);
+  }
+
+  /* Coming soon / Disabled Button */
+  .disabled-btn {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: auto; /* Allow hover to show title tooltip */
+  }
+
+  .disabled-btn:hover {
+    transform: none;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--border-color);
+  }
+
+  /* Responsive Design Media Queries */
+  @media (max-width: 900px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .cards-list {
+      grid-template-rows: auto auto; /* Stretch naturally on single column mobile */
+    }
+    .subpage-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .nav-bar {
+      flex-direction: column;
+      gap: 1rem;
+      border-radius: 20px;
+      padding: 0.8rem 1rem;
+    }
+    .nav-links {
+      width: 100%;
+      justify-content: center;
+    }
+    .lang-switcher {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .welcome-text {
+      font-size: 2.3rem;
+    }
+    
+    .presentation-section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .intro-paragraph {
+      font-size: 1rem;
+    }
+    
+    .container {
+      padding: 1rem 1rem 3.5rem 1rem;
+    }
+    
+    .socials-grid {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .social-btn {
+      justify-content: center;
+    }
+
+    .social-btn[data-tooltip]::before {
+      display: none; /* Hide hover tooltips on mobile to avoid overlap */
+    }
+  }
+</style>
