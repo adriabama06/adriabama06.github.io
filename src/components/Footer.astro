@@ -1,17 +1,17 @@
 ---
 interface Props {
-  socialsTitle: string;
-  discordTooltip: string;
-  linkedinFuture: string;
-  emailTooltip: string;
-  emailSubject: string;
+  socialsTitleText: string;
+  discordTooltipText: string;
+  linkedinFutureText: string;
+  emailTooltipText: string;
+  emailSubjectText: string;
 }
 
-const { socialsTitle, discordTooltip, linkedinFuture, emailTooltip, emailSubject } = Astro.props;
+const { socialsTitleText, discordTooltipText, linkedinFutureText, emailTooltipText, emailSubjectText } = Astro.props;
 ---
 
 <footer class="socials-section">
-  <h2 class="socials-title">{socialsTitle}</h2>
+  <h2 class="socials-title">{socialsTitleText}</h2>
   
   <div class="socials-grid">
     <a href="https://github.com/adriabama06" class="social-btn github-btn" target="_blank" rel="noopener noreferrer">
@@ -24,19 +24,19 @@ const { socialsTitle, discordTooltip, linkedinFuture, emailTooltip, emailSubject
       <span class="social-label">YouTube</span>
     </a>
 
-    <button id="discord-copy-btn" class="social-btn discord-btn" data-tooltip={discordTooltip} aria-label="Copy Discord username">
+    <button id="discord-copy-btn" class="social-btn discord-btn" data-tooltip={discordTooltipText} aria-label="Copy Discord username">
       <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" fill="currentColor">
         <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.72-11,68.6,68.6,0,0,1-10.64-5.12c.91-.67,1.81-1.37,2.67-2.1a75.22,75.22,0,0,0,72.71,0c.87.73,1.76,1.43,2.67,2.1a68.86,68.86,0,0,1-10.64,5.12,74.74,74.74,0,0,0,6.72,11,105.73,105.73,0,0,0,31-18.83C129.24,48.72,123.34,25.94,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.9,46,53.77,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.14,46,96,53,91,65.69,84.69,65.69Z"/>
       </svg>
       <span class="social-label" id="discord-label">Discord</span>
     </button>
 
-    <div class="social-btn linkedin-btn disabled-btn" title={linkedinFuture}>
+    <div class="social-btn linkedin-btn disabled-btn" title={linkedinFutureText}>
       <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      <span class="social-label">{linkedinFuture}</span>
+      <span class="social-label">{linkedinFutureText}</span>
     </div>
 
-    <a href={`mailto:adriabama06@gmail.com?subject=${encodeURIComponent(emailSubject)}`} class="social-btn email-btn" title={emailTooltip}>
+    <a href={`mailto:adriabama06@gmail.com?subject=${encodeURIComponent(emailSubjectText)}`} class="social-btn email-btn" title={emailTooltipText}>
       <svg class="social-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
       <span class="social-label">Email</span>
     </a>
