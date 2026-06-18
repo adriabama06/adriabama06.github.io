@@ -1,0 +1,259 @@
+---
+interface Props {
+  timelineTitle: string;
+  batxTitle: string;
+  batxDesc: string;
+  upcTitle: string;
+  upcDesc: string;
+  futureText: string;
+}
+
+const { timelineTitle, batxTitle, batxDesc, upcTitle, upcDesc, futureText } = Astro.props;
+---
+
+<section class="timeline-section">
+  <h2 class="timeline-section-title">{timelineTitle}</h2>
+  
+  <div class="timeline-wrapper">
+    
+    <div class="timeline-item">
+      <div class="timeline-bubble-container">
+        <div class="timeline-bubble bubble-batx">
+          <span class="bubble-icon">🎓</span>
+        </div>
+      </div>
+      <div class="timeline-card">
+        <h3 class="timeline-card-title">{batxTitle}</h3>
+        <p class="timeline-card-desc">{batxDesc}</p>
+      </div>
+    </div>
+
+    <div class="timeline-connector-container">
+      <div class="timeline-line solid-gradient-line"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-bubble-container">
+        <div class="timeline-bubble bubble-upc">
+          <span class="bubble-icon">💻</span>
+        </div>
+      </div>
+      <div class="timeline-card highlighted-timeline-card">
+        <div class="live-pulse"></div>
+        <h3 class="timeline-card-title">{upcTitle}</h3>
+        <p class="timeline-card-desc">{upcDesc}</p>
+      </div>
+    </div>
+
+    <div class="timeline-connector-container">
+      <div class="timeline-line fading-gradient-line"></div>
+    </div>
+
+    <div class="timeline-item future-item">
+      <div class="timeline-bubble-container">
+        <div class="timeline-bubble bubble-future">
+          <span class="bubble-icon">🚀</span>
+        </div>
+      </div>
+      <div class="timeline-future-text">
+        {futureText}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .timeline-section {
+    margin-bottom: 6rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .timeline-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-timeline), transparent);
+  }
+
+  .timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .timeline-bubble-container {
+    margin-bottom: 1rem;
+    z-index: 10;
+  }
+
+  .timeline-bubble {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #111827;
+    border: 3px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .bubble-icon {
+    font-size: 1.4rem;
+  }
+
+  .bubble-batx {
+    border-color: var(--color-timeline);
+    box-shadow: 0 0 15px var(--color-timeline-glow);
+  }
+
+  .bubble-upc {
+    border-color: var(--color-upc);
+    box-shadow: 0 0 15px var(--color-upc-glow);
+  }
+
+  .bubble-future {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.8);
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+
+  .timeline-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.25rem 1.75rem;
+    max-width: 500px;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .timeline-card:hover {
+    transform: scale(1.02);
+  }
+
+  .highlighted-timeline-card {
+    border-color: rgba(14, 165, 233, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlighted-timeline-card:hover {
+    border-color: var(--color-upc);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+  }
+
+  .live-pulse {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-upc);
+    border-radius: 50%;
+  }
+
+  .live-pulse::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-upc);
+    border-radius: 50%;
+    animation: pulseGlow 1.8s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+  }
+
+  .timeline-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .timeline-connector-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-line {
+    width: 3px;
+    height: 100%;
+  }
+
+  .solid-gradient-line {
+    background: linear-gradient(to bottom, var(--color-timeline) 0%, var(--color-upc) 100%);
+  }
+
+  .fading-gradient-line {
+    background: linear-gradient(to bottom, var(--color-upc) 0%, rgba(14, 165, 233, 0) 100%);
+  }
+
+  .future-item {
+    opacity: 0.85;
+  }
+
+  .timeline-future-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--text-muted) 30%, rgba(255, 255, 255, 0.3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shineText 3s infinite alternate;
+  }
+
+  @keyframes shineText {
+    from { opacity: 0.7; }
+    to { opacity: 1; filter: drop-shadow(0 0 1px rgba(255,255,255,0.1)); }
+  }
+</style>

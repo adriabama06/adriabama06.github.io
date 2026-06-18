@@ -1,0 +1,221 @@
+---
+import type { Lang } from '../data/translations';
+import type { Repo, Video } from '../data/content';
+import Hero from './Hero.astro';
+import Card from './Card.astro';
+import Timeline from './Timeline.astro';
+
+interface Props {
+  lang: Lang;
+  t: {
+    hello: string;
+    introText: string;
+    reposTitle: string;
+    videosTitle: string;
+    visitRepo: string;
+    watchVideo: string;
+    hintText: string;
+    seeMore: string;
+    timelineTitle: string;
+    batxTitle: string;
+    batxDesc: string;
+    upcTitle: string;
+    upcDesc: string;
+    futureText: string;
+  };
+  repos: Repo[];
+  videos: Video[];
+  getPath: (path: string) => string;
+}
+
+const { lang, t, repos, videos, getPath } = Astro.props;
+---
+
+<Hero hello={t.hello} introText={t.introText} />
+
+<section class="grid-section">
+  <div class="main-grid">
+    
+    <div class="column">
+      <div class="column-header-container">
+        <svg class="col-icon repo-col-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+        <h2 class="column-title">{t.reposTitle}</h2>
+      </div>
+      
+      <div class="cards-list">
+        {repos.map(repo => (
+          <Card
+            type="repo"
+            url={repo.url}
+            image={repo.image}
+            title={repo.title}
+            tags={repo.tags}
+            description={repo.descriptions[lang]}
+            badgeLabel={t.visitRepo}
+            hintText={t.hintText}
+          />
+        ))}
+      </div>
+      
+      <div class="see-more-container">
+        <a href={getPath('repositories')} class="see-more-btn repo-see-more">
+          <span>{t.seeMore}</span>
+          <svg class="arrow-icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="column-header-container">
+        <svg class="col-icon video-col-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25a29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        <h2 class="column-title">{t.videosTitle}</h2>
+      </div>
+
+      <div class="cards-list">
+        {videos.map(video => (
+          <Card
+            type="video"
+            url={video.url}
+            image={video.image}
+            title={video.title[lang]}
+            tags={video.tags}
+            description={video.descriptions[lang]}
+            badgeLabel={t.watchVideo}
+            hintText={t.hintText}
+          />
+        ))}
+      </div>
+      
+      <div class="see-more-container">
+        <a href={getPath('videos')} class="see-more-btn video-see-more">
+          <span>{t.seeMore}</span>
+          <svg class="arrow-icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<Timeline
+  timelineTitle={t.timelineTitle}
+  batxTitle={t.batxTitle}
+  batxDesc={t.batxDesc}
+  upcTitle={t.upcTitle}
+  upcDesc={t.upcDesc}
+  futureText={t.futureText}
+/>
+
+<style>
+  .grid-section {
+    margin-bottom: 5rem;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .column-header-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.75rem;
+  }
+
+  .col-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .repo-col-icon {
+    color: var(--color-repo);
+    filter: drop-shadow(0 0 6px var(--color-repo-glow));
+  }
+
+  .video-col-icon {
+    color: var(--color-video);
+    filter: drop-shadow(0 0 6px var(--color-video-glow));
+  }
+
+  .column-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .cards-list {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.75rem;
+    flex-grow: 1;
+  }
+
+  .see-more-container {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .see-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .arrow-icon-btn {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .see-more-btn:hover {
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .see-more-btn:hover .arrow-icon-btn {
+    transform: translateX(4px);
+  }
+
+  .repo-see-more:hover {
+    border-color: var(--color-repo);
+    background: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  }
+
+  .video-see-more:hover {
+    border-color: var(--color-video);
+    background: rgba(239, 68, 68, 0.05);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+  }
+
+  @media (max-width: 900px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .cards-list {
+      grid-template-rows: auto auto;
+    }
+  }
+</style>

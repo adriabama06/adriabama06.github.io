@@ -1,0 +1,107 @@
+---
+interface Props {
+  hello: string;
+  introText: string;
+}
+
+const { hello, introText } = Astro.props;
+---
+
+<section class="presentation-section">
+  <div class="avatar-glow-container">
+    <div class="avatar-fallback">ab</div>
+  </div>
+  <h1 class="welcome-text">{hello} <span class="gradient-text">adriabama06</span></h1>
+  <p class="intro-paragraph">{introText}</p>
+</section>
+
+<style>
+  .presentation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .avatar-glow-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-glow-container::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(135deg, var(--color-repo), var(--color-timeline), var(--color-upc));
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(8px);
+    opacity: 0.8;
+    animation: rotateGlow 10s linear infinite;
+  }
+
+  @keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .avatar-fallback {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: #111827;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-main);
+    letter-spacing: -1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  .welcome-text {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa 10%, #c084fc 50%, #38bdf8 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .intro-paragraph {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-wrap: balance;
+  }
+
+  @media (max-width: 600px) {
+    .welcome-text {
+      font-size: 2.3rem;
+    }
+    
+    .presentation-section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .intro-paragraph {
+      font-size: 1rem;
+    }
+  }
+</style>

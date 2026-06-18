@@ -1,0 +1,46 @@
+---
+import type { Lang } from '../data/translations';
+import type { Video } from '../data/content';
+import Card from './Card.astro';
+
+interface Props {
+  lang: Lang;
+  t: {
+    videosPageTitle: string;
+    videosPageDesc: string;
+    watchVideo: string;
+    hintText: string;
+    backToHome: string;
+  };
+  videos: Video[];
+  getPath: (path: string) => string;
+}
+
+const { lang, t, videos, getPath } = Astro.props;
+---
+
+<section class="subpage-section">
+  <div class="subpage-header">
+    <h1 class="welcome-text"><span class="gradient-text">{t.videosPageTitle}</span></h1>
+    <p class="intro-paragraph">{t.videosPageDesc}</p>
+  </div>
+  
+  <div class="subpage-grid">
+    {videos.map(video => (
+      <Card
+        type="video"
+        url={video.url}
+        image={video.image}
+        title={video.title[lang]}
+        tags={video.tags}
+        description={video.descriptions[lang]}
+        badgeLabel={t.watchVideo}
+        hintText={t.hintText}
+      />
+    ))}
+  </div>
+
+  <div class="back-link-container">
+    <a href={getPath('')} class="back-to-home-link">{t.backToHome}</a>
+  </div>
+</section>

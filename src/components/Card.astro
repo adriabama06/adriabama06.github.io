@@ -1,0 +1,193 @@
+---
+interface Props {
+  type: 'repo' | 'video';
+  url: string;
+  image: string;
+  title: string;
+  tags: string[];
+  description: string;
+  badgeLabel: string;
+  hintText: string;
+}
+
+const { type, url, image, title, tags, description, badgeLabel, hintText } = Astro.props;
+---
+
+<a href={url} class={`card ${type === 'repo' ? 'repo-card' : 'video-card'}`} aria-label={badgeLabel}>
+  <div class="card-image-wrapper">
+    <img src={image} alt={title} class="card-image" loading="lazy" />
+    <div class={`card-badge ${type === 'repo' ? 'repo-badge' : 'video-badge'}`}>{type === 'repo' ? 'GitHub' : 'YouTube'}</div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{title}</h3>
+    <div class="tags-container">
+      {tags.map(tag => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+    <p class="card-desc">{description}</p>
+    <div class="card-hint">
+      <span>{hintText}</span>
+      <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    
+    transform: translate3d(0, 0, 0);
+    outline: 1px solid transparent;
+    backface-visibility: hidden;
+    transition: 
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+      border-color 0.4s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+
+  .repo-card {
+    --accent: var(--color-repo);
+    --glow: var(--color-repo-glow);
+  }
+
+  .video-card {
+    --accent: var(--color-video);
+    --glow: var(--color-video-glow);
+  }
+
+  .card:hover {
+    transform: translate3d(0, -8px, 0) scale3d(1.02, 1.02, 1) rotate3d(0, 0, 1, 0.4deg);
+    border-color: var(--accent);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.45), 
+      0 0 25px var(--glow);
+    z-index: 2;
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.05);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .repo-badge {
+    background: #2563eb;
+  }
+
+  .video-badge {
+    background: #dc2626;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-title {
+    color: var(--accent);
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  .card-hint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.75rem;
+    margin-top: auto;
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-hint {
+    color: var(--accent);
+  }
+
+  .arrow-icon {
+    width: 14px;
+    height: 14px;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .arrow-icon {
+    transform: translate3d(4px, 0, 0);
+  }
+</style>
