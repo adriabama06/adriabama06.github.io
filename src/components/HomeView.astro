@@ -1,15 +1,9 @@
 ---
-import type { Lang } from '../data/translations';
-import type { Repo, Video } from '../data/content';
+import type { Lang, TimelineItem } from '../data/types';
+import type { Repo, Video } from '../data/types';
 import Hero from './Hero.astro';
 import Card from './Card.astro';
 import Timeline from './Timeline.astro';
-
-interface TimelineItem {
-  title: string;
-  content: string;
-  color: string;
-}
 
 interface Props {
   lang: Lang;

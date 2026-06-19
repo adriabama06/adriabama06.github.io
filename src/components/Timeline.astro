@@ -1,15 +1,5 @@
 ---
-interface LinkItem {
-  text: string;
-  url: string;
-}
-
-interface TimelineItem {
-  title: string;
-  content: string;
-  color: string;
-  links?: LinkItem[];
-}
+import type { TimelineItem } from '../data/types';
 
 interface Props {
   timelineTitle: string;

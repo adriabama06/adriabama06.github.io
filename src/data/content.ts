@@ -1,20 +1,5 @@
-import type { Lang } from './translations';
-
-export interface Repo {
-  title: string;
-  url: string;
-  image: string;
-  tags: string[];
-  descriptions: Record<Lang, string>;
-}
-
-export interface Video {
-  title: Record<Lang, string>;
-  url: string;
-  image: string;
-  tags: string[];
-  descriptions: Record<Lang, string>;
-}
+import type { Lang, Repo, Video } from './types';
+export type { Repo, Video } from './types';
 
 export const repos: Repo[] = [
   {
@@ -40,7 +25,7 @@ export const repos: Repo[] = [
     }
   },
   {
-    title: "ffmpeg-version-manager",
+    title: "(dummy) ffmpeg-version-manager",
     url: "https://github.com/adriabama06/ffmpeg-version-manager",
     image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
     tags: ["C++", "CLI/TUI tool", "Multiplatform"],

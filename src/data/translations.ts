@@ -1,16 +1,5 @@
-export type Lang = 'es' | 'en' | 'ca';
-
-export interface LinkItem {
-  text: string;
-  url: string;
-}
-
-export interface TimelineItem {
-  title: string;
-  content: string;
-  color: string;
-  links?: LinkItem[];
-}
+import type { Lang, TimelineItem } from './types';
+export type { Lang, LinkItem, TimelineItem } from './types';
 
 export const translations: Record<Lang, {
   metaTitle: string;
