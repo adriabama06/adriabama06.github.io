@@ -1,8 +1,14 @@
 ---
+interface TimelineLink {
+  label: string;
+  url: string;
+}
+
 interface TimelineItem {
   title: string;
   content: string;
   color: string;
+  links?: TimelineLink[];
 }
 
 interface Props {
@@ -68,6 +74,15 @@ const { timelineTitle, timeline, futureText } = Astro.props;
             )}
             <h3 class="timeline-card-title">{item.title}</h3>
             <p class="timeline-card-desc">{item.content}</p>
+            {item.links && item.links.length > 0 && (
+              <div class="timeline-card-links">
+                {item.links.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="timeline-link">
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       );
@@ -248,6 +263,31 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .timeline-card-desc {
     font-size: 0.85rem;
     color: var(--text-muted);
+  }
+
+  .timeline-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .timeline-link {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .timeline-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--item-color);
+    color: var(--item-color);
   }
 
   .future-dot {

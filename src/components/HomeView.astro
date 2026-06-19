@@ -5,6 +5,12 @@ import Hero from './Hero.astro';
 import Card from './Card.astro';
 import Timeline from './Timeline.astro';
 
+interface TimelineItem {
+  title: string;
+  content: string;
+  color: string;
+}
+
 interface Props {
   lang: Lang;
   t: {
@@ -17,12 +23,7 @@ interface Props {
     hintText: string;
     seeMore: string;
     timelineTitle: string;
-    esoTitle: string;
-    esoDesc: string;
-    batxTitle: string;
-    batxDesc: string;
-    upcTitle: string;
-    upcDesc: string;
+    timeline: TimelineItem[];
     futureText: string;
   };
   repos: Repo[];
@@ -45,7 +46,7 @@ const { lang, t, repos, videos, getPath } = Astro.props;
       </div>
       
       <div class="cards-list">
-        {repos.map(repo => (
+        {repos.slice(0,2).map(repo => (
           <Card
             type="repo"
             url={repo.url}
@@ -74,7 +75,7 @@ const { lang, t, repos, videos, getPath } = Astro.props;
       </div>
 
       <div class="cards-list">
-        {videos.map(video => (
+        {videos.slice(0,2).map(video => (
           <Card
             type="video"
             url={video.url}
