@@ -1,8 +1,14 @@
 ---
+interface LinkItem {
+  text: string;
+  url: string;
+}
+
 interface TimelineItem {
   title: string;
   content: string;
   color: string;
+  links?: LinkItem[];
 }
 
 interface Props {
@@ -68,6 +74,22 @@ const { timelineTitle, timeline, futureText } = Astro.props;
             )}
             <h3 class="timeline-card-title">{item.title}</h3>
             <p class="timeline-card-desc">{item.content}</p>
+            {item.links && item.links.length > 0 && (
+              <div class="timeline-card-links">
+                {item.links.map((link) => (
+                  <a 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="timeline-card-link"
+                    style={`--link-color: ${item.color};`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="link-icon"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       );
@@ -165,7 +187,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .timeline-item:hover .timeline-dot:not(.future-dot) {
+  .timeline-item:has(.timeline-card:hover) .timeline-dot:not(.future-dot) {
     transform: translateY(-50%) scale(1.25);
   }
 
@@ -200,6 +222,45 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .timeline-card:hover {
     transform: translateX(6px);
     border-color: var(--item-color);
+  }
+
+  .timeline-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .timeline-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .timeline-card-link:hover {
+    color: #fff;
+    background: color-mix(in srgb, var(--link-color) 15%, transparent);
+    border-color: var(--link-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--link-color) 20%, transparent);
+  }
+
+  .link-icon {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .timeline-card-link:hover .link-icon {
+    opacity: 1;
   }
 
   .highlighted-timeline-card {
