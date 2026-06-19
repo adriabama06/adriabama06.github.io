@@ -311,6 +311,31 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     color: var(--text-muted);
   }
 
+  .timeline-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .timeline-link {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .timeline-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--item-color);
+    color: var(--item-color);
+  }
+
   .future-dot {
     background-color: rgba(15, 23, 42, 0.8);
     border-color: rgba(255, 255, 255, 0.2);

@@ -38,7 +38,18 @@ export const repos: Repo[] = [
       en: "Translate and dub the audio and subtitles of your videos using artificial intelligence, just like YouTube. It works 100% locally (for complete privacy) or can be integrated using compatible OpenAI-like APIs.",
       ca: "Tradueix i doblega l'àudio i els subtítols dels teus vídeos utilitzant intel·ligència artificial a l'estil de YouTube. Funciona de manera 100% local (per a total privadesa) o bé integrat mitjançant APIs compatibles tipus OpenAI."
     }
-  }
+  },
+  {
+    title: "ffmpeg-version-manager",
+    url: "https://github.com/adriabama06/ffmpeg-version-manager",
+    image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
+    tags: ["C++", "CLI/TUI tool", "Multiplatform"],
+    descriptions: {
+      es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples versiones de FFmpeg rápidamente.",
+      en: "Install, switch, and uninstall FFmpeg versions on Windows and Linux instantly. A super-fast command-line tool designed to manage multiple FFmpeg versions quickly.",
+      ca: "Instal·la, canvia i desinstal·la versions de FFmpeg a Windows i Linux de forma instantània. Una eina de línia d'ordres superràpida dissenyada per gestionar múltiples versions de FFmpeg ràpidament."
+    }
+  },
 ];
 
 export const videos: Video[] = [
