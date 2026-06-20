@@ -1,5 +1,4 @@
-import type { Lang, Repo, Video } from './types';
-export type { Repo, Video } from './types';
+import type { Repo, Video } from './types';
 
 export const repos: Repo[] = [
   {
@@ -25,16 +24,49 @@ export const repos: Repo[] = [
     }
   },
   {
-    title: "(dummy) ffmpeg-version-manager",
-    url: "https://github.com/adriabama06/ffmpeg-version-manager",
-    image: "/images/repos/ffmpeg-version-manager.avif",
-    tags: ["C++", "CLI/TUI tool", "Multiplatform"],
+    title: "EstacioMeteorologica",
+    url: "https://github.com/adriabama06/EstacioMeteorologica",
+    image: "/images/repos/EstacioMeteorologica.avif",
+    tags: ["Arduino/C++", "4º ESO", "Treball de recerca"],
     descriptions: {
-      es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples versiones de FFmpeg rápidamente.",
-      en: "Install, switch, and uninstall FFmpeg versions on Windows and Linux instantly. A super-fast command-line tool designed to manage multiple FFmpeg versions quickly.",
-      ca: "Instal·la, canvia i desinstal·la versions de FFmpeg a Windows i Linux de forma instantània. Una eina de línia d'ordres superràpida dissenyada per gestionar múltiples versions de FFmpeg ràpidament."
+      es: "Estación meteorológica por la práctica del trabajo de investigación de 4º de ESO. Hecho con Arduino e impresora 3D.",
+      en: "Weather station for the 4th year of ESO research project. Made with Arduino and 3D printer.",
+      ca: "Estació meteorològica per la pràctica del treball de recerca de 4t d'ESO. Fet amb Arduino i impressora 3D."
     }
   },
+  {
+    title: "image-to-ascii",
+    url: "https://github.com/adriabama06/image-to-ascii",
+    image: "/images/repos/image-to-ascii.avif",
+    tags: ["C", "STD", "BMP", "Image Conversion", "Multi Thread", "Dynamic Memory"],
+    descriptions: {
+      es: "Programa hecho en C sin librerías externas, usando solo las librerías std, para hacer todo el proceso de leer archivos Bitmap, convertirlos y reproducirlos en la terminal.",
+      en: "Program written in C without external libraries, using only the std libraries, to perform the entire process of reading Bitmap files, converting them, and playing them in the terminal.",
+      ca: "Programa fet en C sense llibreries externes, usant només les llibreries std, per fer tot el procés de llegir arxius Bitmap, convertir-los i reproduir-los a la terminal."
+    }
+  },
+  {
+    title: "image-to-ascii-cpp",
+    url: "https://github.com/adriabama06/image-to-ascii-cpp",
+    image: "/images/repos/image-to-ascii-cpp.avif",
+    tags: ["C++", "STD", "BMP", "Image Conversion", "Multi Thread", "Dynamic Memory"],
+    descriptions: {
+      es: "Programa reescrito en C++ sin librerías externas, usando solo las librerías std, para hacer todo el proceso de leer archivos Bitmap, convertirlos y reproducirlos en la terminal.",
+      en: "Program rewritten in C++ without external libraries, using only the std libraries, to perform the entire process of reading Bitmap files, converting them, and playing them in the terminal.",
+      ca: "Programa reescrit en C++ sense llibreries externes, usant només les llibreries std, per fer tot el procés de llegir arxius Bitmap, convertir-los i reproduir-los a la terminal."
+    }
+  },
+  {
+    title: "libabmp",
+    url: "https://github.com/adriabama06/libabmp",
+    image: "/images/repos/libabmp.avif",
+    tags: ["C", "STD", "BMP", "Dynamic Memory", "CMake"],
+    descriptions: {
+      es: "Una biblioteca C sencilla y ligera para leer y escribir archivos BMP, implementada desde cero sin dependencias externas.",
+      en: "A simple and lightweight C library for reading and writing BMP files, implemented from scratch without external dependencies.",
+      ca: "Una biblioteca C senzilla i lleugera per llegir i escriure fitxers BMP, implementada des de zero sense dependències externes."
+    }
+  }
 ];
 
 export const videos: Video[] = [

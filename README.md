@@ -1,3 +1,5 @@
+Convert to avif: `ffmpeg -i FILE -c:v libsvtav1 -preset 0 -svtav1-params tune=0:scenecut=0:avif=1 -frames:v 1 -vf "scale=w=1280:h=720:force_original_aspect_ratio=increase,crop=1280:720" out.avif`
+
 # Astro Starter Kit: Minimal
 
 ```sh
