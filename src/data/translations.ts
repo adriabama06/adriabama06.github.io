@@ -46,41 +46,68 @@ export const translations: Record<Lang, {
       {
         title: "1º de ESO — Redes y Servidores de Minecraft",
         content: "Creé mi propia red de Minecraft de forma independiente. Durante este proyecto, aprendí sobre el funcionamiento de internet, DNS, control de versiones de Java, desarrollo de plugins en Java, interconexión de servidores utilizando BungeeCord como proxy y bases de datos relacionales con MySQL y MariaDB.",
-        color: "#a855f7"
+        color: "#a855f7",
+        links: [
+          { text: "Video sobre mi network de Minecraft", url: "https://www.youtube.com/watch?v=u73bc2WvQ6A" },
+          { text: "muisc-bot-discord.js-v12", url: "https://github.com/adriabama06/muisc-bot-discord.js-v12" }
+        ]
       },
       {
-        title: "2º de ESO — Bots de Discord y JavaScript",
-        content: "Comencé a desarrollar bots para Discord para automatizar y añadir funciones a comunidades. Este fue mi primer contacto serio con JavaScript, lo que me impulsó a practicar programación de manera constante y a entender el desarrollo asíncrono.",
-        color: "#8b5cf6"
+        title: "2º de ESO — Bots de Discord, JavaScript y Bases de Datos",
+        content: "Comencé a desarrollar bots para Discord para automatizar y añadir funciones a comunidades, incluyendo un bot de música avanzado. Sin conocimientos teóricos previos de ingeniería de software, diseñé una clase abstracta base para la gestión de bases de datos, implementando de forma polimórfica métodos específicos para Postgres y SQLite. Este proyecto me impulsó a practicar programación de manera constante y a entender el desarrollo asíncrono.",
+        color: "#8b5cf6",
+        links: [
+          { text: "no-soy-un-Musicbot (de prueba)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
+          { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
+          { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
+        ]
       },
       {
-        title: "3º de ESO — Abstracción de Bases de Datos",
-        content: "Desarrollé un bot de música avanzado. Sin conocimientos teóricos previos de ingeniería de software, diseñé una clase abstracta base para la gestión de bases de datos. Esto me permitió implementar de forma polimórfica métodos específicos para Postgres y SQLite, logrando una abstracción de objetos completa y un código altamente modular.",
-        color: "#6366f1"
+        title: "3º de ESO — Copia de Google Drive con Go y React",
+        content: "Desarrollé una copia de Google Drive llamada dontlostme, aprendiendo Go y React en el proceso. Lamentablemente, el código del frontend se ha perdido.",
+        color: "#6366f1",
+        links: [
+          { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
+          { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
+        ]
       },
       {
         title: "4º de ESO — C/C++ y Estación Meteorológica",
         content: "Aprendí a programar en C y C++. Desarrollé un conversor de imágenes a ASCII en C puro, utilizando únicamente la librería estándar. Además, para el \"mini treball de recerca\" de 4º de ESO, construí una estación meteorológica física utilizando placas Arduino, sensores y una impresora 3D para diseñar y fabricar la carcasa.",
-        color: "#3b82f6"
+        color: "#3b82f6",
+        links: [
+          { text: "image-to-ascii", url: "https://github.com/adriabama06/image-to-ascii" },
+          { text: "image-to-ascii-cpp", url: "https://github.com/adriabama06/image-to-ascii-cpp" },
+          { text: "EstacioMeteorologica", url: "https://github.com/adriabama06/EstacioMeteorologica" }
+        ]
       },
       {
         title: "1º de Bachillerato — Algoritmia y Olimpíadas",
         content: "Durante el verano de transición de 4º de ESO a Bachillerato, asistí al curso de verano de algoritmia de la UPC en la Facultad de Matemáticas y Estadística (FME). Esta experiencia me motivó a apuntarme a la OICAT (Olimpíada Informàtica de Catalunya), donde, con apenas experiencia previa en algoritmos y siendo mi primer año, logré quedar en la posición 15 de 31 finalistas.",
-        color: "#0ea5e9"
+        color: "#0ea5e9",
+        links: [
+          { text: "Curso de verano de algoritmia en la Facultad de Matemáticas y Estadística", url: "https://algoprog.jutge.org/" },
+          { text: "Olimpiada Informática", url: "https://olimpiada-informatica.cat/oicat-2024/" }
+        ]
       },
       {
         title: "2º de Bachillerato — Chatbot para el Instituto",
         content: "Realicé mi Treball de Recerca (TR) sobre la creación de un chatbot inteligente para mi instituto, el cual desarrollé durante el verano. Fue un gran reto técnico, ya que en ese momento solo hacía un año del lanzamiento de ChatGPT 3.5 y el ecosistema de IA generativa estaba muy verde; de hecho, Llama 3 se lanzó justo cuando estaba finalizando el código del proyecto.",
-        color: "#14b8a6"
+        color: "#14b8a6",
+        links: [
+          { text: "chatbot-tr-2024", url: "https://github.com/adriabama06/chatbot-tr-2024-monorepo" }
+        ]
       },
       {
         title: "Verano tras Selectividad — Proyectos y Código Abierto",
         content: "Tras acabar los exámenes de acceso a la universidad, dediqué el verano a crear y contribuir a múltiples proyectos de código abierto: desarrollé una librería en C puro sin STD para leer/escribir archivos .bmp; creé auto-video-translator para traducir/doblar vídeos de cualquier idioma; programé ffmpeg-version-manager para gestionar versiones de FFmpeg en Windows/Linux; colaboré en REAL-Video-Enhancer añadiendo nuevas opciones de escalado; y empaqueté en contenedores Docker herramientas avanzadas como MiniCPM-o, whisper.cpp-server, SCP Secret Laboratory, Practical-RIFE, RIFE-FixDropFrames, docker-canary-serve-v2 (con soporte para Canary V2 de NVIDIA), Qwen3-TTS, SUPIR-extended, MultiPassDedup y whisper-webui-custom-server.",
         color: "#f59e0b",
         links: [
+          { text: "libabmp", url: "https://github.com/adriabama06/libabmp" },
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
-          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" }
+          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" },
+          { text: "Dockers...", url: "https://github.com/adriabama06?tab=repositories&q=Docker" }
         ]
       },
       {
@@ -131,14 +158,23 @@ export const translations: Record<Lang, {
         color: "#a855f7"
       },
       {
-        title: "2nd Year of ESO — Discord Bots & JavaScript",
-        content: "I started developing Discord bots to automate and add custom features to community servers. This was my first serious contact with JavaScript, which pushed me to practice programming consistently and understand asynchronous software flows.",
-        color: "#8b5cf6"
+        title: "2nd Year of ESO — Discord Bots, JavaScript & Databases",
+        content: "I started developing Discord bots to automate and add custom features to community servers, including an advanced music bot. Without any prior theoretical knowledge of software engineering, I designed an abstract base class for database management, polymorphically implementing specific methods for Postgres and SQLite. This pushed me to practice programming consistently and understand asynchronous software flows.",
+        color: "#8b5cf6",
+        links: [
+          { text: "no-soy-un-Musicbot (test)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
+          { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
+          { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
+        ]
       },
       {
-        title: "3rd Year of ESO — Database Abstraction",
-        content: "I developed an advanced music bot. Without any prior theoretical knowledge of software engineering, I designed an abstract base class for database management. This allowed me to polymorphically implement specific methods for Postgres and SQLite, achieving object abstraction and highly modular code.",
-        color: "#6366f1"
+        title: "3rd Year of ESO — Google Drive Clone with Go & React",
+        content: "I built a Google Drive clone called dontlostme, learning Go and React in the process. Unfortunately, the frontend code has been lost.",
+        color: "#6366f1",
+        links: [
+          { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
+          { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
+        ]
       },
       {
         title: "4th Year of ESO — C/C++ & Weather Station",
@@ -213,14 +249,23 @@ export const translations: Record<Lang, {
         color: "#a855f7"
       },
       {
-        title: "2n d'ESO — Bots de Discord i JavaScript",
-        content: "Vaig començar a desenvolupar bots per a Discord per automatitzar i afegir funcions a comunitats. Aquest va ser el meu primer contacte seriós amb JavaScript, la qual cosa em va impulsar a practicar programació de manera constant i a comprendre el desenvolupament asíncron.",
-        color: "#8b5cf6"
+        title: "2n d'ESO — Bots de Discord, JavaScript i Bases de Dades",
+        content: "Vaig començar a desenvolupar bots per a Discord per automatitzar i afegir funcions a comunitats, incloent un bot de música avançat. Sense coneixements teòrics previs d'enginyeria de programari, vaig dissenyar una classe abstracta base per a la gestió de bases de dades, implementant de forma polimòrfica mètodes específics per a Postgres i SQLite. Aquest projecte em va impulsar a practicar programació de manera constant i a comprendre el desenvolupament asíncron.",
+        color: "#8b5cf6",
+        links: [
+          { text: "no-soy-un-Musicbot (de prova)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
+          { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
+          { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
+        ]
       },
       {
-        title: "3r d'ESO — Abstracció de Bases de Dades",
-        content: "Vaig desenvolupar un bot de música avançat. Sense coneixements teòrics previs d'enginyeria de programari, vaig dissenyar una classe abstracta base per a la gestió de bases de dades. Això em va permetre implementar de forma polimòrfica mètodes específics per a Postgres i SQLite, aconseguint una abstracció d'objectes completa i un codi altament modular.",
-        color: "#6366f1"
+        title: "3r d'ESO — Còpia de Google Drive amb Go i React",
+        content: "Vaig desenvolupar una còpia de Google Drive anomenada dontlostme, aprenent Go i React en el procés. Malauradament, el codi del frontend s'ha perdut.",
+        color: "#6366f1",
+        links: [
+          { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
+          { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
+        ]
       },
       {
         title: "4t d'ESO — C/C++ i Estació Meteorològica",
