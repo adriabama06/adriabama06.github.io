@@ -5,7 +5,7 @@ export const repos: Repo[] = [
   {
     title: "ffmpeg-version-manager",
     url: "https://github.com/adriabama06/ffmpeg-version-manager",
-    image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
+    image: "/images/repos/ffmpeg-version-manager.avif",
     tags: ["C++", "CLI/TUI tool", "Multiplatform"],
     descriptions: {
       es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples versiones de FFmpeg rápidamente.",
@@ -16,7 +16,7 @@ export const repos: Repo[] = [
   {
     title: "auto-video-translator",
     url: "https://github.com/adriabama06/auto-video-translator",
-    image: "https://i.ytimg.com/vi/nKUtm3Z_aVg/maxresdefault.jpg",
+    image: "/images/repos/auto-video-translator.avif",
     tags: ["JavaScript", "TTS + STT", "Local / OpenAI-like API", "Docker"],
     descriptions: {
       es: "Traduce y dobla el audio y subtítulos de tus vídeos utilizando inteligencia artificial al estilo de YouTube. Funciona de manera 100% local (para total privacidad) o bien integrado mediante APIs compatibles tipo OpenAI.",
@@ -27,7 +27,7 @@ export const repos: Repo[] = [
   {
     title: "(dummy) ffmpeg-version-manager",
     url: "https://github.com/adriabama06/ffmpeg-version-manager",
-    image: "https://i.ytimg.com/vi/MZpFsnVdyu8/maxresdefault.jpg",
+    image: "/images/repos/ffmpeg-version-manager.avif",
     tags: ["C++", "CLI/TUI tool", "Multiplatform"],
     descriptions: {
       es: "Instala, cambia y desinstala versiones de FFmpeg en Windows y Linux de forma instantánea. Una herramienta de línea de comandos súper rápida diseñada para gestionar múltiples versiones de FFmpeg rápidamente.",
@@ -45,7 +45,7 @@ export const videos: Video[] = [
       ca: "Com comprimir vídeos sense perdre qualitat amb VMAF i AB-AV1"
     },
     url: "https://www.youtube.com/watch?v=jY-ypkG8MZ8",
-    image: "https://i.ytimg.com/vi/jY-ypkG8MZ8/maxresdefault.jpg",
+    image: "/images/videos/compress-videos-vmaf.avif",
     tags: ["Tutorial", "FFmpeg", "AB-AV1", "AV1 Encoding"],
     descriptions: {
       es: "Guía completa para instalar y usar AB-AV1 junto con FFmpeg. Aprende paso a paso a exprimir el almacenamiento al máximo garantizando que tus vídeos retengan una fidelidad visual perfecta medida con VMAF.",
@@ -60,7 +60,7 @@ export const videos: Video[] = [
       ca: "Tutorial de Gaussian Splatting / NeRF amb NerfStudio + Brush"
     },
     url: "https://www.youtube.com/watch?v=38jCys1ZvOw",
-    image: "https://i.ytimg.com/vi/38jCys1ZvOw/maxresdefault.jpg",
+    image: "/images/videos/gaussian-splatting-nerfstudio.avif",
     tags: ["3D Reconstruction", "AI Graphics", "Cross-GPU", "Docker"],
     descriptions: {
       es: "Domina la reconstrucción tridimensional fotorrealista a partir de capturas de vídeo convencionales. Guía práctica y detallada usando NerfStudio y Brush, con soporte para gráficas NVIDIA, AMD, Intel y procesadores de Mac.",
