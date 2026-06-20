@@ -72,6 +72,16 @@ export const translations: Record<Lang, {
         ]
       },
       {
+        title: "Verano de 3º — NeRF, Cortometraje y Exposiciones",
+        content: "A raíz de un tutorial sobre NeRF (Neural Radiance Fields) que publiqué en mi canal de YouTube, el artista y realizador Felipe Elgueta (@elguet_) me contactó para colaborar en un cortometraje sobre medioambiente, encargándome de la generación y procesado de diversas escenas 3D mediante esta tecnología. Gracias a este trabajo, fui invitado como ponente al Experimental Photo Festival (EXP-22) en Barcelona. Allí impartí una conferencia sobre el funcionamiento de NeRF y sus aplicaciones artísticas, además de dirigir un taller práctico donde los asistentes experimentaron con sus propios vídeos. Adicionalmente, realicé otra ponencia mediante videollamada para profundizar en el funcionamiento de esta tecnología. El cortometraje final fue seleccionado y proyectado en el prestigioso +RAIN Film Festival en 2024, destacando en una sección dedicada a obras que exploran el uso cinematográfico de la IA.",
+        color: "#ec4899",
+        links: [
+          { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
+          { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
+          { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
+        ]
+      },
+      {
         title: "4º de ESO — C/C++ y Estación Meteorológica",
         content: "Aprendí a programar en C y C++. Desarrollé un conversor de imágenes a ASCII en C puro, utilizando únicamente la librería estándar. Además, para el \"mini treball de recerca\" de 4º de ESO, construí una estación meteorológica física utilizando placas Arduino, sensores y una impresora 3D para diseñar y fabricar la carcasa.",
         color: "#3b82f6",
@@ -177,6 +187,16 @@ export const translations: Record<Lang, {
         ]
       },
       {
+        title: "Summer of 3rd Year — NeRF, Short Film & Exhibitions",
+        content: "Following a tutorial on NeRF (Neural Radiance Fields) I published on YouTube, I was contacted by artist and filmmaker Felipe Elgueta (@elguet_) to collaborate on an environmental short film, where I was responsible for generating and processing various 3D scenes using NeRF. Thanks to this project, I was invited as a speaker to the Experimental Photo Festival (EXP-22) in Barcelona. There, I gave a talk on NeRF technology and its artistic applications, alongside hosting a hands-on workshop where attendees experimented with their own recorded videos. I also participated in another session via video call to explain the underlying technology. The resulting short film was ultimately screened at the prestigious +RAIN Film Festival in 2024, highlighting innovative uses of AI in filmmaking.",
+        color: "#ec4899",
+        links: [
+          { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
+          { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
+          { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
+        ]
+      },
+      {
         title: "4th Year of ESO — C/C++ & Weather Station",
         content: "I learned to program in C and C++. I created an image-to-ASCII converter in pure C, using only the standard library. Additionally, for our 4th-year \"mini-research project\", I built a physical weather station using Arduino boards, sensors, and a 3D printer to design and manufacture its housing.",
         color: "#3b82f6"
@@ -265,6 +285,16 @@ export const translations: Record<Lang, {
         links: [
           { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
           { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
+        ]
+      },
+      {
+        title: "Estiu de 3r — NeRF, Curtmetratge i Exposicions",
+        content: "A rel d'un tutorial sobre NeRF (Neural Radiance Fields) que vaig publicar al meu canal de YouTube, l'artista i realitzador Felipe Elgueta (@elguet_) em va contactar per col·laborar en un curtmetratge sobre medi ambient, on em vaig encarregar de la generació i el processament de diverses escenes 3D mitjançant aquesta tecnologia. Gràcies a aquest projecte, vaig ser convidat com a ponent a l'Experimental Photo Festival (EXP-22) a Barcelona. Allà vaig impartir una conferència sobre el funcionament de NeRF i les seves aplicacions artístiques, a més de dirigir un taller pràctic on els assistents van experimentar amb els seus propis vídeos. Addicionalment, vaig realitzar una altra ponència per videotrucada per aprofundir en el funcionament d'aquesta tecnologia. El curtmetratge final va ser seleccionat i projectat al prestigiós +RAIN Film Festival el 2024, destacant en una secció dedicada a obres que exploren l'ús cinematogràfic de la IA.",
+        color: "#ec4899",
+        links: [
+          { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
+          { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
+          { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
         ]
       },
       {
