@@ -1,5 +1,6 @@
 ---
 import type { TimelineItem } from '../data/types';
+import LinkIcon from '../content/link.svg';
 
 interface Props {
   timelineTitle: string;
@@ -74,7 +75,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
                     class="timeline-card-link"
                     style={`--link-color: ${item.color};`}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="link-icon"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                    <LinkIcon class="link-icon" width="12" height="12" />
                     {link.text}
                   </a>
                 ))}
