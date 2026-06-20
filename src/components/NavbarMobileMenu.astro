@@ -1,0 +1,135 @@
+---
+// Componente encargado de manejar el botón de menú en móvil y el fondo oscuro
+---
+
+<button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
+
+<div id="mobile-overlay" class="mobile-overlay"></div>
+
+<!-- Estilos propios de este componente (Botón y Overlay) -->
+<style>
+  .mobile-menu-btn,
+  .mobile-overlay {
+    display: none;
+  }
+
+  @media (max-width: 650px) {
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 45px;
+      height: 45px;
+      z-index: 1000;
+      background: rgba(11, 15, 30, 0.9);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<!-- Estilos GLOBALES para sobreescribir la Navbar cuando esté en móvil -->
+<style is:global>
+  @media (max-width: 650px) {
+    .nav-bar {
+      position: fixed !important;
+      top: 0 !important;
+      left: -100%;
+      width: 260px;
+      height: 100vh;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: center !important; 
+      margin: 0 !important;
+      border-radius: 0 !important;
+      border: none !important;
+      border-right: 1px solid var(--border-color) !important;
+      padding: 4.5rem 0 2.5rem 0 !important; 
+      z-index: 999;
+    }
+
+    .nav-bar.open {
+      left: 0; 
+    }
+
+    .nav-bar .nav-links {
+      flex-direction: column !important;
+      width: 80%; 
+      gap: 0.3rem !important; 
+    }
+
+    .nav-bar .nav-item {
+      width: 100%;
+      justify-content: flex-start; 
+      padding: 0.8rem 1.1rem !important;
+    }
+
+    .nav-bar .lang-switcher {
+      flex-direction: row !important; 
+      width: auto; 
+      margin-top: auto; 
+      padding: 0.2rem !important;
+      border-radius: 9999px !important; 
+      gap: 0; 
+    }
+
+    .nav-bar .lang-btn {
+      width: auto;
+      text-align: center;
+      padding: 0.4rem 0.8rem !important; 
+    }
+  }
+</style>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const navBar = document.getElementById('nav-bar');
+  const overlay = document.getElementById('mobile-overlay');
+
+  function toggleMenu() {
+    if (navBar && overlay) {
+      navBar.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+  }
+
+  menuBtn?.addEventListener('click', toggleMenu);
+  overlay?.addEventListener('click', toggleMenu); 
+</script>
