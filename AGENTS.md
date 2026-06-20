@@ -1,141 +1,157 @@
-# Portfolio (Astro)
+# AGENTS.md
 
 ## Project Overview
 
-Personal portfolio website built with Astro (minimal template). Deployed to GitHub Pages.
+This is **adriabama06's personal portfolio website** — a multilingual, static site built with [Astro](https://astro.build). It showcases repositories, YouTube videos, a career timeline, and social links. The site is deployed to **GitHub Pages** via a CI workflow on every push to `main`.
 
-- **Framework:** Astro 6.x
-- **Package manager:** pnpm
-- **Node:** >= 22.12.0
-- **Deployment:** GitHub Actions -> GitHub Pages
+Live URL: `https://adriabama06.github.io/`
 
-## Commands
+---
 
-| Command            | Action                           |
-| ------------------ | -------------------------------- |
-| `pnpm install`     | Install dependencies             |
-| `pnpm dev`         | Start dev server at localhost:4321 |
-| `pnpm build`       | Build to `./dist/`               |
-| `pnpm preview`     | Preview production build locally |
+## Tech Stack
 
-## Architecture
+| Layer        | Technology                                             |
+| ------------ | ------------------------------------------------------ |
+| Framework    | **Astro v6** (static-site generation, `.astro` files)  |
+| Language     | **TypeScript** (strict mode via `astro/tsconfigs/strict`) |
+| Styling      | **Vanilla CSS** — a single `src/styles/global.css` with CSS custom properties (design tokens). Components also use scoped `<style>` blocks inside `.astro` files. |
+| Font         | **Inter** (loaded via Google Fonts)                     |
+| Package Mgr  | **pnpm** (lockfile: `pnpm-lock.yaml`, workspace: `pnpm-workspace.yaml`) |
+| Node         | **≥ 22.12.0** (see `package.json` `engines`)           |
+| Deployment   | **GitHub Pages** — `.github/workflows/pages.yml` builds with `pnpm build` and deploys `dist/` |
 
-### Single-Component Pattern
+---
 
-The entire site uses a **single component** (`src/components/Portfolio.astro`) that renders all views (home, repositories, videos) based on props. Every page file is a thin wrapper:
+## Project Structure
 
 ```
-src/pages/index.astro          -> <Portfolio lang="es" />
-src/pages/en.astro             -> <Portfolio lang="en" />
-src/pages/ca.astro             -> <Portfolio lang="ca" />
-src/pages/repositories.astro   -> <Portfolio lang="es" view="repositories" />
-src/pages/videos.astro         -> <Portfolio lang="es" view="videos" />
-src/pages/en/repositories.astro -> <Portfolio lang="en" view="repositories" />
-...etc
+/
+├── public/                   # Static assets served as-is (favicons, images, SVG icons)
+│   ├── images/               # Portfolio card images (avif format preferred)
+│   └── *.svg                 # Social/nav SVG icons (arrow, discord, email, github, etc.)
+├── src/
+│   ├── components/           # Astro components (all .astro)
+│   │   ├── Portfolio.astro   # Root layout — HTML shell, head, imports, view routing
+│   │   ├── Navbar.astro      # Top navigation bar + mobile sidebar menu
+│   │   ├── Hero.astro        # Hero/intro section
+│   │   ├── HomeView.astro    # Home page content (hero, featured repos/videos, timeline)
+│   │   ├── ReposView.astro   # /repositories subpage
+│   │   ├── VideosView.astro  # /videos subpage
+│   │   ├── Card.astro        # Reusable card for repo/video items
+│   │   ├── Timeline.astro    # Vertical career timeline
+│   │   └── Footer.astro      # Social links footer
+│   ├── data/
+│   │   ├── types.ts          # Shared TypeScript types (Lang, Repo, Video, TimelineItem, etc.)
+│   │   ├── translations.ts   # All UI strings for es/en/ca — single source of truth for i18n
+│   │   └── content.ts        # Repo and video data arrays
+│   ├── lib/                  # (Currently empty — reserved for future utilities)
+│   ├── pages/                # File-based routing
+│   │   ├── index.astro       # / → Spanish (default language)
+│   │   ├── en.astro          # /en → English
+│   │   ├── ca.astro          # /ca → Catalan
+│   │   ├── repositories.astro
+│   │   ├── videos.astro
+│   │   ├── en/               # /en/repositories, /en/videos
+│   │   └── ca/               # /ca/repositories, /ca/videos
+│   ├── styles/
+│   │   └── global.css        # Global styles, design tokens, shared utility classes
+│   ├── utils/
+│   │   └── paths.ts          # getPath() helper for locale-aware URL generation
+│   └── env.d.ts              # Astro client type declarations
+├── astro.config.mjs          # Astro configuration (base: '/')
+├── tsconfig.json             # TypeScript config (extends astro/tsconfigs/strict)
+├── package.json
+└── pnpm-lock.yaml
 ```
 
-### Routing & Localization
+---
 
-- **ES (default):** `/`, `/repositories`, `/videos`
-- **EN:** `/en`, `/en/repositories`, `/en/videos`
-- **CA:** `/ca`, `/ca/repositories`, `/ca/videos`
+## Internationalization (i18n)
 
-The `getPath()` helper inside `Portfolio.astro` handles this:
-- For `lang="es"`: paths are root-level (`/`, `/repositories`)
-- For `lang="en"` or `lang="ca"`: paths are prefixed (`/en`, `/en/repositories`)
+The site supports **three languages**: Spanish (`es`), English (`en`), and Catalan (`ca`).
 
-### Content Model
+- **Spanish is the default language** — it is served at the root (`/`).
+- English and Catalan are served at `/en` and `/ca` respectively.
+- All translatable strings live in `src/data/translations.ts` as a `Record<Lang, { ... }>`.
+- The `Lang` type is defined in `src/data/types.ts` as `'es' | 'en' | 'ca'`.
+- Use `src/utils/paths.ts` → `getPath(lang, path)` to generate locale-aware URLs. For `es`, paths omit the locale prefix; for `en`/`ca`, paths are prefixed with `/{lang}/`.
+- When adding a new UI string, add the key to all three language entries in `translations.ts`.
+- When adding a new page, create the base file (for `es`) and corresponding files inside `en/` and `ca/` directories.
 
-All content is **hardcoded** inside `Portfolio.astro`:
+---
 
-- `translations` object: i18n strings keyed by `{es, en, ca}`
-- `repos` array: featured GitHub repos with `{title, url, image, tags, descriptions}`
-- `videos` array: featured YouTube videos with `{title, url, image, tags, descriptions}`
+## Styling Conventions
 
-All text content supports 3 languages. New content must add translations for all 3.
+- **Design tokens** are defined as CSS custom properties in `:root` inside `src/styles/global.css`.
+- Key tokens: `--bg-dark`, `--bg-card`, `--border-color`, `--text-main`, `--text-muted`, `--color-repo`, `--color-video`, `--color-theme-a`, `--color-theme-b`, `--font-family`.
+- **Component styles** are scoped via `<style>` blocks inside `.astro` files. Prefer scoped styles for component-specific rules.
+- **Shared styles** (`.container`, `.subpage-*`, `.back-link-container`, responsive breakpoints) live in `global.css`.
+- The design is **dark-mode only** with a subtle grid background and radial gradient accents.
+- **Breakpoints**: `900px` (tablet) and `600px` (mobile) are used consistently.
+- **No CSS frameworks** (no Tailwind, no Bootstrap). Use vanilla CSS only.
 
-### CSS Architecture
+---
 
-- **Global styles** (`<style is:global>`): CSS variables, body, scrollbar, global reset
-- **Local styles** (`<style>`): Component-specific styles scoped to this file
-- Dark theme with CSS variables (`--bg-dark`, `--color-repo`, `--color-video`, etc.)
-- Responsive breakpoints: 900px (2-col -> 1-col), 650px (nav stack), 600px (typography)
+## Component Architecture
 
-## Code Conventions
+All components are **Astro components** (`.astro` files) — no client-side framework (React, Vue, etc.) is used.
 
-### Adding Content
+- `Portfolio.astro` is the root layout. It receives a `lang` prop and an optional `view` prop (`'home' | 'repositories' | 'videos'`), then conditionally renders the appropriate view component.
+- Page files in `src/pages/` are thin wrappers that import `Portfolio.astro` and pass the correct `lang` and `view` props.
+- Components receive translated strings and data as props rather than importing translations directly (except `Portfolio.astro` which acts as the data provider).
+- Client-side JavaScript is embedded as `<script>` tags inside components when needed (e.g., mobile menu toggle, clipboard copy, smooth scrolling).
 
-When adding new repos or videos:
+---
 
-1. Add the entry to the `repos` or `videos` array in `Portfolio.astro`
-2. Provide translations for **all 3 languages** in the content fields
-3. Ensure images are accessible (YouTube thumbnails via `i.ytimg.com` are fine)
+## Content Data
 
-### Adding Languages
+- **Repositories** and **Videos** are defined in `src/data/content.ts` as typed arrays (`Repo[]`, `Video[]`).
+- Each entry includes multilingual descriptions via `Record<Lang, string>`.
+- Images for cards are stored in `public/images/` (prefer `.avif` format for performance).
+- To convert images to avif: `ffmpeg -i FILE -c:v libsvtav1 -preset 0 -svtav1-params tune=0:scenecut=0:avif=1 -frames:v 1 -vf "scale=w=1280:h=720:force_original_aspect_ratio=increase,crop=1280:720" out.avif`
 
-To add a new language:
+---
 
-1. Add translation keys to the `translations` object
-2. Add the language option to the `lang` prop type: `'es' | 'en' | 'ca' | 'XX'`
-3. Add the language button in the nav switcher
-4. Create page wrapper files for each route under the new language folder
-5. Update `getPath()` to handle the new language prefix
+## Development
 
-### Adding Views
+```bash
+# Install dependencies
+pnpm install
 
-To add a new view section:
+# Start dev server (http://localhost:4321)
+pnpm dev
 
-1. Add the view option to the `view` prop type: `'home' | 'repositories' | 'videos' | 'newview'`
-2. Add the nav item in the navbar section
-3. Add the `{view === 'newview' && (...)}` conditional block
-4. Create page wrapper files for each language
+# Production build
+pnpm build
 
-### CSS
+# Preview production build
+pnpm preview
+```
 
-- Use the existing CSS variable system for colors and spacing
-- Follow the existing naming convention: `.section-name-element-name` (BEM-like)
-- Hover effects use `cubic-bezier(0.16, 1, 0.3, 1)` for smooth transitions
-- Use `translate3d` and `backface-visibility` for GPU-accelerated transforms
-- Keep responsive styles in `@media` queries at the bottom of the `<style>` block
-
-### JavaScript
-
-- Inline `<script>` is used only for the Discord copy-to-clipboard feature
-- Keep client-side scripts minimal and self-contained
-- Use `async/await` for clipboard operations with error handling
+---
 
 ## Deployment
 
-- CI/CD via `.github/workflows/pages.yml`
-- Triggers on push to `main` or manual dispatch
-- Uses Node 24 + pnpm 11
-- Builds to `dist/` and deploys as GitHub Pages artifact
+Deployment is fully automated via GitHub Actions (`.github/workflows/pages.yml`):
 
-## File Structure
+1. Triggered on push to `main` or manual dispatch.
+2. Uses Node.js 24 + pnpm 11.
+3. Runs `pnpm install` → `pnpm build`.
+4. Uploads `dist/` to GitHub Pages.
 
-```
-src/
-  components/
-    Portfolio.astro        # Single component - all views, all content, all CSS
-  pages/
-    index.astro            # ES home
-    en.astro               # EN home
-    ca.astro               # CA home
-    repositories.astro     # ES repos
-    videos.astro           # ES videos
-    en/
-      repositories.astro   # EN repos
-      videos.astro         # EN videos
-    ca/
-      repositories.astro   # CA repos
-      videos.astro         # CA videos
-```
+**Do not** manually deploy or modify the `dist/` directory — it is git-ignored and rebuilt on every deploy.
 
-## Important Notes
+---
 
-- **Never** edit `dist/` - it is generated output
-- **Never** edit `.astro/` - it contains generated types
-- All translations must be kept in sync across ES, EN, and CA
-- The component file is large (~1450 lines) due to inline CSS and content - this is intentional. Do not split it unless there is a compelling reason.
-- No external CSS framework, no JS framework, no API calls - this is a static site
-- The `public/` directory contains only favicon files
+## Key Guidelines for AI Agents
+
+1. **No CSS frameworks** — use vanilla CSS with the existing design token system.
+2. **No client-side frameworks** — keep everything as Astro components. Use `<script>` tags for interactivity.
+3. **Always maintain all three languages** when modifying translatable text or adding new pages/features.
+4. **Keep the default language (Spanish) at the root** — do not change the routing convention.
+5. **Preserve existing comments and docstrings** unless directly related to the change being made.
+6. **Test responsiveness** at the two breakpoints: 900px and 600px.
+7. **Use semantic HTML** and maintain accessibility (proper heading hierarchy, alt texts, ARIA labels).
+8. **Image format**: prefer `.avif` for new images; store them in `public/images/`.
+9. **Type safety**: the project uses TypeScript strict mode — do not use `any` or bypass type checks.
+10. **Scoped styles**: prefer `<style>` blocks inside `.astro` components; only add to `global.css` for truly shared styles.
