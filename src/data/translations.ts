@@ -3,6 +3,7 @@ export type { Lang, LinkItem, TimelineItem } from './types';
 
 export const translations: Record<Lang, {
   metaTitle: string;
+  metaDescription: string;
   hello: string;
   introText: string;
   reposTitle: string;
@@ -30,6 +31,7 @@ export const translations: Record<Lang, {
 }> = {
   es: {
     metaTitle: "adriabama06 | Portafolio",
+    metaDescription: "Portafolio de adriabama06 - Desarrollador de software, estudiante de ingeniería informática y creador de contenido.",
     hello: "¡Hola! Soy",
     introText: "Desarrollador de software, estudiante de ingeniería informática y creador de contenido. Me apasiona construir herramientas de código abierto útiles y eficientes, optimizar flujos multimedia e IA, y compartir tutoriales técnicos en mi canal de YouTube para ayudar a otros desarrolladores y entusiastas.",
     reposTitle: "Repositorios destacados",
@@ -149,6 +151,7 @@ export const translations: Record<Lang, {
   },
   en: {
     metaTitle: "adriabama06 | Portfolio",
+    metaDescription: "adriabama06's Portfolio - Software developer, computer engineering student, and content creator.",
     hello: "Hi! I'm",
     introText: "Software developer, computer engineering student, and content creator. I am passionate about building useful and efficient open-source tools, optimizing multimedia workflows and AI pipelines, and sharing technical tutorials on YouTube to empower other developers and tech enthusiasts.",
     reposTitle: "Featured repositories",
@@ -250,6 +253,7 @@ export const translations: Record<Lang, {
   },
   ca: {
     metaTitle: "adriabama06 | Portafoli",
+    metaDescription: "Portafoli d'adriabama06 - Desenvolupador de programari, estudiant d'enginyeria informàtica i creador de contingut.",
     hello: "Hola! Sóc",
     introText: "Desenvolupador de programari, estudiant d'enginyeria informàtica i creador de contingut. Em fascina construir eines útils i eficients de codi obert, optimitzar fluxos de treball multimèdia i IA, i compartir tutorials tecnològics al meu canal de YouTube per ajudar a altres desenvolupadors i entusiastes.",
     reposTitle: "Repositoris destacats",

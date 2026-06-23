@@ -18,6 +18,20 @@ interface Props {
 const { lang, view = 'home' } = Astro.props;
 const t = translations[lang];
 const getPath = (path: string) => getPathHelper(lang, path);
+
+const siteUrl = 'https://adriabama06.github.io';
+const viewPathMap = {
+  home: '',
+  repositories: 'repositories',
+  videos: 'videos',
+};
+const currentPath = viewPathMap[view];
+const getAbsoluteUrl = (l: Lang) => {
+  const localPath = getPathHelper(l, currentPath);
+  return `${siteUrl}${localPath === '/' ? '' : localPath}`;
+};
+
+const canonicalUrl = getAbsoluteUrl(lang);
 ---
 
 <!DOCTYPE html>
@@ -29,7 +43,29 @@ const getPath = (path: string) => getPathHelper(lang, path);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
   <title>{t.metaTitle}</title>
+  <meta name="description" content={t.metaDescription} />
   <meta name="google-site-verification" content="f-lAAKUAY6d5BPCtRIYLl69leaibMXfc-jLwV6rCXc8" />
+
+  <!-- Canonical & Localization (hreflang) -->
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang="x-default" href={getAbsoluteUrl('es')} />
+  <link rel="alternate" hreflang="es" href={getAbsoluteUrl('es')} />
+  <link rel="alternate" hreflang="en" href={getAbsoluteUrl('en')} />
+  <link rel="alternate" hreflang="ca" href={getAbsoluteUrl('ca')} />
+
+  <!-- Open Graph / Facebook / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={t.metaTitle} />
+  <meta property="og:description" content={t.metaDescription} />
+  <meta property="og:image" content={`${siteUrl}/images/avatar.avif`} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalUrl} />
+  <meta property="twitter:title" content={t.metaTitle} />
+  <meta property="twitter:description" content={t.metaDescription} />
+  <meta property="twitter:image" content={`${siteUrl}/images/avatar.avif`} />
 </head>
 <body>
   <div class="container">
