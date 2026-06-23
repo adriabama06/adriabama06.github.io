@@ -66,6 +66,17 @@ export const repos: Repo[] = [
       en: "A simple and lightweight C library for reading and writing BMP files, implemented from scratch without external dependencies.",
       ca: "Una biblioteca C senzilla i lleugera per llegir i escriure fitxers BMP, implementada des de zero sense dependències externes."
     }
+  },
+  {
+    title: "bitmap-color-invert-test",
+    url: "https://github.com/adriabama06/bitmap-color-invert-test",
+    image: "/images/repos/bitmap-color-invert-test.avif",
+    tags: ["C", "C++", "Go", "Rust", "Dynamic Memory"],
+    descriptions: {
+      es: "Aprovechando lo que aprendí sobre los archivos Bitmap, hice un código en varios lenguajes de programación para invertir los colores de una imagen Bitmap.",
+      en: "Taking advantage of what I learned about Bitmap files, I wrote code in several programming languages ​​to invert the colors of a Bitmap image.",
+      ca: "Aprofitant el que vaig aprendre sobre els fitxers Bitmap, vaig fer un codi en diversos llenguatges de programacio per invertir els colors d'una imatge Bitmap."
+    }
   }
 ];
 
