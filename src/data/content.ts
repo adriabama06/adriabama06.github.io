@@ -74,8 +74,19 @@ export const repos: Repo[] = [
     tags: ["C", "C++", "Go", "Rust", "Dynamic Memory"],
     descriptions: {
       es: "Aprovechando lo que aprendí sobre los archivos Bitmap, hice un código en varios lenguajes de programación para invertir los colores de una imagen Bitmap.",
-      en: "Taking advantage of what I learned about Bitmap files, I wrote code in several programming languages ​​to invert the colors of a Bitmap image.",
+      en: "Taking advantage of what I learned about Bitmap files, I wrote code in several programming languages to invert the colors of a Bitmap image.",
       ca: "Aprofitant el que vaig aprendre sobre els fitxers Bitmap, vaig fer un codi en diversos llenguatges de programacio per invertir els colors d'una imatge Bitmap."
+    }
+  },
+  {
+    title: "REAL Video Enhancer",
+    url: "https://github.com/TNTwise/REAL-Video-Enhancer",
+    image: "/images/repos/real-video-enhancer.avif",
+    tags: ["Python", "AI", "Video Enhancer"],
+    descriptions: {
+      es: "Contribuí a un proyecto que uso a diario y para el cual hice un tutorial en mi canal de YouTube. Mi aportación mejoró la selección de archivos y de salida, ampliando las opciones disponibles.",
+      en: "I contributed to a project I use daily and for which I made a tutorial on my YouTube channel. My contribution improved the file and output selection, expanding the available options.",
+      ca: "Vaig contribuir a un projecte que faig servir cada dia i per al qual vaig fer un tutorial al meu canal de YouTube. La meva contribució va millorar la selecció de fitxers i de sortida, ampliant les opcions disponibles."
     }
   }
 ];
