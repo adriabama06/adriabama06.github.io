@@ -28,6 +28,8 @@ Live URL: `https://adriabama06.github.io/`
 /
 ├── public/                   # Static assets served as-is (favicons, images, SVG icons)
 │   ├── images/               # Portfolio card images (avif format preferred)
+│   │   ├── repos/            # Images for repository cards
+│   │   └── videos/           # Images for video cards
 │   └── *.svg                 # Social/nav SVG icons (arrow, discord, email, github, etc.)
 ├── src/
 │   ├── components/           # Astro components (all .astro)
@@ -108,6 +110,7 @@ All components are **Astro components** (`.astro` files) — no client-side fram
 - **Repositories** and **Videos** are defined in `src/data/content.ts` as typed arrays (`Repo[]`, `Video[]`).
 - Each entry includes multilingual descriptions via `Record<Lang, string>`.
 - Images for cards are stored in `public/images/` (prefer `.avif` format for performance).
+- Images are organized into subdirectories: `public/images/repos/` for repository cards and `public/images/videos/` for video cards. Repos can reuse video images by referencing the video path.
 - To convert images to avif: `ffmpeg -i FILE -c:v libsvtav1 -preset 0 -svtav1-params tune=0:scenecut=0:avif=1 -frames:v 1 -vf "scale=w=1280:h=720:force_original_aspect_ratio=increase,crop=1280:720" out.avif`
 
 ---
@@ -152,6 +155,6 @@ Deployment is fully automated via GitHub Actions (`.github/workflows/pages.yml`)
 5. **Preserve existing comments and docstrings** unless directly related to the change being made.
 6. **Test responsiveness** at the two breakpoints: 900px and 600px.
 7. **Use semantic HTML** and maintain accessibility (proper heading hierarchy, alt texts, ARIA labels).
-8. **Image format**: prefer `.avif` for new images; store them in `public/images/`.
+8. **Image format**: prefer `.avif` for new images; store them in `public/images/repos/` or `public/images/videos/` as appropriate.
 9. **Type safety**: the project uses TypeScript strict mode — do not use `any` or bypass type checks.
 10. **Scoped styles**: prefer `<style>` blocks inside `.astro` components; only add to `global.css` for truly shared styles.

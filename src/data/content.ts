@@ -88,6 +88,28 @@ export const repos: Repo[] = [
       en: "I contributed to a project I use daily and for which I made a tutorial on my YouTube channel. My contribution improved the file and output selection, expanding the available options.",
       ca: "Vaig contribuir a un projecte que faig servir cada dia i per al qual vaig fer un tutorial al meu canal de YouTube. La meva contribució va millorar la selecció de fitxers i de sortida, ampliant les opcions disponibles."
     }
+  },
+  {
+    title: "copper-player",
+    url: "https://github.com/adriabama06/copper-player",
+    image: "/images/videos/copper-golem.avif",
+    tags: ["JavaScript", "Minecraft", "Bot", "Mineflayer"],
+    descriptions: {
+      es: "Bot de Minecraft diseñado para automatizar la organización de objetos en los cofres dentro de un área de trabajo definida.",
+      en: "Minecraft bot designed to automate item organization in chests within a defined workspace.",
+      ca: "Bot de Minecraft dissenyat per automatitzar l'organització d'objectes en els cofres dins d'una àrea de treball definida."
+    }
+  },
+  {
+    title: "elytra-steal",
+    url: "https://github.com/adriabama06/elytra-steal",
+    image: "/images/videos/elytra-bot.avif",
+    tags: ["JavaScript", "Minecraft", "Bot", "Mineflayer"],
+    descriptions: {
+      es: "Bot automatizado con Mineflayer para recolectar élitros del End. Es lo suficientemente autosuficiente como para equiparse las élitros que consigue y consumir su propia comida, logrando trabajar de forma ininterrumpida durante horas.",
+      en: "Automated bot built with Mineflayer to collect Elytras from the End. It is self-sufficient enough to equip the gathered Elytras and consume food, allowing it to work uninterrupted for hours.",
+      ca: "Bot automatitzat amb Mineflayer per recol·lectar èlitres de l'End. És prou autònom com per equipar-se les èlitres que recull i consumir el seu propi menjar per poder treballar ininterrompudament durant hores."
+    }
   }
 ];
 
@@ -255,6 +277,51 @@ export const videos: Video[] = [
       es: "Tutorial completo para instalar NeRF en Windows con ejemplos prácticos y recomendaciones para obtener los mejores resultados en reconstrucción 3D.",
       en: "Complete tutorial to install NeRF on Windows with practical examples and recommendations to get the best results in 3D reconstruction.",
       ca: "Tutorial complet per instal·lar NeRF a Windows amb exemples pràctics i recomanacions per obtenir els millors resultats en reconstrucció 3D."
+    }
+  },
+  {
+    title: {
+      es: "Cómo instalar y usar localmente Depth Anything V3 y sacar archivos GLB/COLMAP/Gaussian Splatting",
+      en: "How to install and use Depth Anything V3 locally and extract GLB/COLMAP/Gaussian Splatting files",
+      ca: "Com instal·lar i usar localment Depth Anything V3 i treure fitxers GLB/COLMAP/Gaussian Splatting"
+    },
+    url: "https://www.youtube.com/watch?v=fkgzm9GydDg",
+    image: "/images/videos/depth-anything-v3.avif",
+    tags: ["Tutorial", "Depth Anything", "3D Reconstruction", "AI", "GLB", "COLMAP", "Gaussian Splatting"],
+    descriptions: {
+      es: "Tutorial completo sobre cómo instalar y usar Depth Anything V3 de forma local para extraer archivos GLB, datos COLMAP y configuraciones de Gaussian Splatting, gracias a un fork propio que facilita su uso mediante Docker.",
+      en: "Complete tutorial on how to install and run Depth Anything V3 locally to extract GLB files, COLMAP data, and Gaussian Splatting configurations, using a custom fork that enables execution via Docker.",
+      ca: "Tutorial complet sobre com instal·lar i utilitzar Depth Anything V3 de forma local per extreure fitxers GLB, dades COLMAP i configuracions de Gaussian Splatting, gràcies a un fork propi que en facilita l'ús mitjançant Docker."
+    }
+  },
+  {
+    title: {
+      es: "He hecho una versión mejorada del Copper Golem en Minecraft con un bot",
+      en: "I've made an enhanced version of the Copper Golem in Minecraft with a bot",
+      ca: "He fet una versió millorada del Copper Golem a Minecraft amb un bot"
+    },
+    url: "https://www.youtube.com/watch?v=5QrJEWMnaZM",
+    image: "/images/videos/copper-golem.avif",
+    tags: ["Minecraft", "Bot", "Copper Golem", "Mineflayer", "Automation"],
+    descriptions: {
+      es: "Creación y demostración de una versión mejorada del Copper Golem de Minecraft mediante un bot completamente automatizado con Mineflayer.",
+      en: "Creation and demonstration of an enhanced version of the Copper Golem in Minecraft using a fully automated bot with Mineflayer.",
+      ca: "Creació i demostració d'una versió millorada del Copper Golem de Minecraft mitjançant un bot completament automatitzat amb Mineflayer."
+    }
+  },
+  {
+    title: {
+      es: "He creado un bot que vuela solo recogiendo todas las Elytras del End",
+      en: "I created a bot that flies on its own collecting all Elytras from the End",
+      ca: "He creat un bot que vola sol recol·lectant totes les èlitres de l'End"
+    },
+    url: "https://www.youtube.com/watch?v=NOXrBFw3T7M",
+    image: "/images/videos/elytra-bot.avif",
+    tags: ["Minecraft", "Bot", "Elytra", "Mineflayer", "Automation"],
+    descriptions: {
+      es: "Diseño y desarrollo de un bot automatizado con Mineflayer que vuela por el End de forma autónoma para recolectar todas las élitros de Minecraft.",
+      en: "Design and development of an automated bot with Mineflayer that flies autonomously through the End to collect all Elytras in Minecraft.",
+      ca: "Disseny i desenvolupament d'un bot automatitzat amb Mineflayer que vola per l'End de manera autònoma per recol·lectar totes les èlitres de Minecraft."
     }
   }
 ];
