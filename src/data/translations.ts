@@ -43,7 +43,8 @@ export const translations: Record<Lang, {
       {
         title: "Educación Primaria",
         content: "Durante esta etapa despertó mi curiosidad por la tecnología y la informática, sentando las bases de mi interés por la computación y motivándome a investigar cómo funcionaban los sistemas digitales por mi cuenta.",
-        color: "#db2777"
+        color: "#db2777",
+        year: 2019
       },
       {
         title: "1º de ESO — Redes y Servidores de Minecraft",
@@ -52,7 +53,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "Video sobre mi network de Minecraft", url: "https://www.youtube.com/watch?v=u73bc2WvQ6A" },
           { text: "muisc-bot-discord.js-v12", url: "https://github.com/adriabama06/muisc-bot-discord.js-v12" }
-        ]
+        ],
+        year: 2020
       },
       {
         title: "2º de ESO — Bots de Discord, JavaScript y Bases de Datos",
@@ -62,7 +64,8 @@ export const translations: Record<Lang, {
           { text: "no-soy-un-Musicbot (de prueba)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
           { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
           { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
-        ]
+        ],
+        year: 2021
       },
       {
         title: "3º de ESO — Copia de Google Drive con Go y React",
@@ -71,7 +74,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
           { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "Verano de 3º — NeRF, Cortometraje y Exposiciones",
@@ -81,7 +85,8 @@ export const translations: Record<Lang, {
           { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
           { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
           { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "4º de ESO — C/C++ y Estación Meteorológica",
@@ -91,7 +96,8 @@ export const translations: Record<Lang, {
           { text: "image-to-ascii", url: "https://github.com/adriabama06/image-to-ascii" },
           { text: "image-to-ascii-cpp", url: "https://github.com/adriabama06/image-to-ascii-cpp" },
           { text: "EstacioMeteorologica", url: "https://github.com/adriabama06/EstacioMeteorologica" }
-        ]
+        ],
+        year: 2023
       },
       {
         title: "1º de Bachillerato — Algoritmia y Olimpíadas",
@@ -100,7 +106,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "Curso de verano de algoritmia en la Facultad de Matemáticas y Estadística", url: "https://algoprog.jutge.org/" },
           { text: "Olimpiada Informática", url: "https://olimpiada-informatica.cat/oicat-2024/" }
-        ]
+        ],
+        year: 2023
       },
       {
         title: "2º de Bachillerato — Chatbot para el Instituto",
@@ -108,7 +115,8 @@ export const translations: Record<Lang, {
         color: "#14b8a6",
         links: [
           { text: "chatbot-tr-2024", url: "https://github.com/adriabama06/chatbot-tr-2024-monorepo" }
-        ]
+        ],
+        year: 2025
       },
       {
         title: "Verano tras Selectividad — Proyectos y Código Abierto",
@@ -120,7 +128,8 @@ export const translations: Record<Lang, {
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
           { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" },
           { text: "Dockers...", url: "https://github.com/adriabama06?tab=repositories&q=Docker" }
-        ]
+        ],
+        year: 2025
       },
       {
         title: "Grado en Ingeniería Informática (FIB - UPC)",
@@ -129,7 +138,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
-        ]
+        ],
+        year: 2026
       }
     ],
     futureText: "...Y mucho más en el futuro",
@@ -163,12 +173,14 @@ export const translations: Record<Lang, {
       {
         title: "Primary Education",
         content: "During this stage, my curiosity for technology and computing was sparked, laying the foundations for my passion for computer science and motivating me to explore how digital systems worked on my own.",
-        color: "#db2777"
+        color: "#db2777",
+        year: 2019
       },
       {
         title: "1st Year of ESO — Minecraft Networks & Servers",
         content: "I independently created my own Minecraft network. Through this project, I learned about internet architecture, DNS, Java version management, Java plugin development, server interconnection using BungeeCord as a proxy, and relational databases with MySQL and MariaDB.",
-        color: "#a855f7"
+        color: "#a855f7",
+        year: 2020
       },
       {
         title: "2nd Year of ESO — Discord Bots, JavaScript & Databases",
@@ -178,7 +190,8 @@ export const translations: Record<Lang, {
           { text: "no-soy-un-Musicbot (test)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
           { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
           { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
-        ]
+        ],
+        year: 2021
       },
       {
         title: "3rd Year of ESO — Google Drive Clone with Go & React",
@@ -187,7 +200,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
           { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "Summer of 3rd Year — NeRF, Short Film & Exhibitions",
@@ -197,22 +211,26 @@ export const translations: Record<Lang, {
           { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
           { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
           { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "4th Year of ESO — C/C++ & Weather Station",
         content: "I learned to program in C and C++. I created an image-to-ASCII converter in pure C, using only the standard library. Additionally, for our 4th-year \"mini-research project\", I built a physical weather station using Arduino boards, sensors, and a 3D printer to design and manufacture its housing.",
-        color: "#3b82f6"
+        color: "#3b82f6",
+        year: 2023
       },
       {
         title: "1st Year of Bachillerato — Algorithms & Olympiads",
         content: "During the summer transition from 4th of ESO to Bachillerato, I attended the UPC algorithms summer course at the Faculty of Mathematics and Statistics (FME). This inspired me to register for OICAT (Catalan Computer Olympiad), where, with barely any prior experience in competitive programming and being my first year, I ranked 15th out of 31 finalists.",
-        color: "#0ea5e9"
+        color: "#0ea5e9",
+        year: 2023
       },
       {
         title: "2nd Year of Bachillerato — School Chatbot TR",
         content: "I conducted my research project (Treball de Recerca) on building an intelligent chatbot for my school over the summer. It was a massive technical challenge: ChatGPT 3.5 had been released barely a year prior, the LLM ecosystem was extremely early, and Llama 3 was released just as I was finishing the codebase.",
-        color: "#14b8a6"
+        color: "#14b8a6",
+        year: 2025
       },
       {
         title: "Summer after Selectividad — Open Source & Projects",
@@ -222,7 +240,8 @@ export const translations: Record<Lang, {
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
           { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" }
-        ]
+        ],
+        year: 2025
       },
       {
         title: "B.S. in Computer Engineering (FIB - UPC)",
@@ -231,7 +250,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
-        ]
+        ],
+        year: 2026
       }
     ],
     futureText: "...And much more in the future",
@@ -265,12 +285,14 @@ export const translations: Record<Lang, {
       {
         title: "Educació Primària",
         content: "Durant aquesta etapa va despertar la meva curiositat per la tecnologia i la informàtica, establint les bases del meu interès per la computació i motivant-me a investigar com funcionaven els sistemes digitals pel meu compte.",
-        color: "#db2777"
+        color: "#db2777",
+        year: 2019
       },
       {
         title: "1r d'ESO — Xarxes i Servidors de Minecraft",
         content: "Vaig crear la meva pròpia xarxa de Minecraft de forma independent. Durant aquest projecte, vaig aprendre sobre el funcionament d'Internet, DNS, control de versions de Java, desenvolupament de plugins en Java, interconnexió de servidors utilitzant BungeeCord com a proxy i bases de dades relacionals amb MySQL i MariaDB.",
-        color: "#a855f7"
+        color: "#a855f7",
+        year: 2020
       },
       {
         title: "2n d'ESO — Bots de Discord, JavaScript i Bases de Dades",
@@ -280,7 +302,8 @@ export const translations: Record<Lang, {
           { text: "no-soy-un-Musicbot (de prova)", url: "https://github.com/adriabama06/no-soy-un-Musicbot" },
           { text: "no-soy-un-music-bot", url: "https://github.com/adriabama06/no-soy-un-music-bot" },
           { text: "dontlostme-server", url: "https://github.com/adriabama06/dontlostme-server" }
-        ]
+        ],
+        year: 2021
       },
       {
         title: "3r d'ESO — Còpia de Google Drive amb Go i React",
@@ -289,32 +312,37 @@ export const translations: Record<Lang, {
         links: [
           { text: "clouder-server", url: "https://github.com/adriabama06/clouder-server" },
           { text: "dontlostme-old", url: "https://github.com/adriabama06/dontlostme-old" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "Estiu de 3r — NeRF, Curtmetratge i Exposicions",
-        content: "A rel d'un tutorial sobre NeRF (Neural Radiance Fields) que vaig publicar al meu canal de YouTube, l'artista i realitzador Felipe Elgueta (@elguet_) em va contactar per col·laborar en un curtmetratge sobre medi ambient, on em vaig encarregar de la generació i el processament de diverses escenes 3D mitjançant aquesta tecnologia. Gràcies a aquest projecte, vaig ser convidat com a ponent a l'Experimental Photo Festival (EXP-22) a Barcelona. Allà vaig impartir una conferència sobre el funcionament de NeRF i les seves aplicacions artístiques, a més de dirigir un taller pràctic on els assistents van experimentar amb els seus propis vídeos. Addicionalment, vaig realitzar una altra ponència per videotrucada per aprofundir en el funcionament d'aquesta tecnologia. El curtmetratge final va ser seleccionat i projectat al prestigiós +RAIN Film Festival el 2024, destacant en una secció dedicada a obres que exploren l'ús cinematogràfic de la IA.",
+        content: "A rel d'un tutorial sobre NeRF (Neural Radiance Fields) que vaig publicar al meu canal de YouTube, l'artista i realitzador Felipe Elgueta (@elguet_) em va contactar per col·laborar en un curtmetratge sobre medi ambient, on em vaig encarregar de la generació i el processament de diverses escenes 3D mitjançant aquesta tecnologia. Gràcies a aquest projecte, vaig ser convidat com a ponent a l'Experimental Photo Festival (EXP-22) a Barcelona. Allà vaig impartir una conferència sobre el funcionament de NeRF i les seves aplicacions artístiques, a més de dirigir un taller pràctic on els assistents van experimentar amb els propis vídeos. Addicionalment, vaig realitzar una altra ponència per videotrucada per aprofundir en el funcionament d'aquesta tecnologia. El curtmetratge final va ser seleccionat i projectat al prestigiós +RAIN Film Festival el 2024, destacant en una secció dedicada a obres que exploren l'ús cinematogràfic de la IA.",
         color: "#ec4899",
         links: [
           { text: "Felipe Elgueta (@elguet_)", url: "https://www.instagram.com/elguet_/" },
           { text: "Experimental Photo Festival (EXP-22)", url: "https://www.experimentalphotofestival.com/exp-22" },
           { text: "+RAIN Film Festival 2024", url: "https://www.upf.edu/es/web/rainfilmfest/programa-2024" }
-        ]
+        ],
+        year: 2022
       },
       {
         title: "4t d'ESO — C/C++ i Estació Meteorològica",
         content: "Vaig aprendre a programar en C i C++. Vaig crear un conversor d'imatges a ASCII en C pur, utilitzant només la llibreria estàndard. A més, per al \"mini treball de recerca\" de 4t d'ESO, vaig construir una estació meteorològica física utilitzant plaques Arduino, sensors i una impressora 3D per dissenyar i fabricar la carcassa.",
-        color: "#3b82f6"
+        color: "#3b82f6",
+        year: 2023
       },
       {
         title: "1r de Batxillerat — Algorísmia i Olimpíades",
         content: "Durant l'estiu de transició de 4t d'ESO a Batxillerat, vaig assistir al curs d'estiu d'algorísmia de la UPC a la Facultat de Matemàtiques i Estadística (FME). Aquesta experiència em va motivar a inscriure'm a l'OICAT (Olimpíada Informàtica de Catalunya) on, amb molt poc bagatge en algorísmia i sent el meu primer any, vaig aconseguir quedar en la posició 15 de 31 finalistes.",
-        color: "#0ea5e9"
+        color: "#0ea5e9",
+        year: 2023
       },
       {
         title: "2n de Batxillerat — Chatbot per a l'Institut",
         content: "Vaig dur a terme el meu Treball de Recerca (TR) sobre la creació d'un chatbot intel·ligent per al meu institut, el qual vaig desenvolupar durant l'estiu. Va ser un repte tècnic majúscul: feia tot just un any del llançament de ChatGPT 3.5 i l'ecosistema d'IA generativa estava molt verd; de fet, Llama 3 es va llançar quan estava enllestint el codi del projecte.",
-        color: "#14b8a6"
+        color: "#14b8a6",
+        year: 2025
       },
       {
         title: "Estiu després de la Selectivitat — Projectes i Codi Obert",
@@ -324,7 +352,8 @@ export const translations: Record<Lang, {
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
           { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" }
-        ]
+        ],
+        year: 2025
       },
       {
         title: "Grau en Enginyeria Informàtica (FIB - UPC)",
@@ -333,7 +362,8 @@ export const translations: Record<Lang, {
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
-        ]
+        ],
+        year: 2026
       }
     ],
     futureText: "...I molt més en el futur",

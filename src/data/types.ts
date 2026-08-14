@@ -10,6 +10,7 @@ export interface TimelineItem {
   content: string;
   color: string;
   links?: LinkItem[];
+  year: number
 }
 
 export interface Repo {
