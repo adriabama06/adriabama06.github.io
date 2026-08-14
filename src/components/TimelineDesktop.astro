@@ -1,0 +1,501 @@
+---
+import type { TimelineItem } from '../data/types';
+import LinkIcon from '../content/link.svg';
+
+interface Props {
+  timelineTitle: string;
+  timeline: TimelineItem[];
+  futureText: string;
+}
+
+const { timelineTitle, timeline, futureText } = Astro.props;
+---
+
+<section class="desktop-timeline-section">
+  <h2 class="timeline-section-title">{timelineTitle}</h2>
+
+  <div class="desktop-timeline-wrapper" id="desktopTimelineWrapper">
+    {timeline.map((item, index) => {
+      const isLast = index === timeline.length - 1;
+
+      return (
+        <div 
+          class={`desktop-timeline-item ${index === 0 ? 'is-active' : 'is-dimmed'}`}
+          data-index={index}
+          style={`--item-color: ${item.color};`}
+        >
+          {/* Columna Izquierda: Año y Línea vertical */}
+          <div class="desktop-year-col">
+            <div class="desktop-year-active-line" />
+            <div 
+              class="desktop-year-bubble"
+              style={`--bubble-color: ${item.color};`}
+            >
+              <span class="desktop-year-text">{item.year}</span>
+            </div>
+          </div>
+
+          {/* Conector horizontal: une la burbuja con la tarjeta */}
+          <div class="desktop-connector-wrapper">
+            <div class="desktop-connector-line" style={`--line-color: ${item.color};`} />
+          </div>
+
+          {/* Columna Derecha: Tarjeta de contenido */}
+          <div class="desktop-card-col">
+            <div class={`desktop-timeline-card ${isLast ? 'highlighted-timeline-card' : ''}`}>
+              {isLast && (
+                <div class="live-pulse" style={`--pulse-color: ${item.color};`} />
+              )}
+              <h3 class="timeline-card-title">{item.title}</h3>
+              <p class="timeline-card-desc">{item.content}</p>
+              {item.links && item.links.length > 0 && (
+                <div class="timeline-card-links">
+                  {item.links.map((link) => (
+                    <a 
+                      href={link.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="timeline-card-link"
+                      style={`--link-color: ${item.color};`}
+                    >
+                      <LinkIcon class="link-icon" width="12" height="12" />
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+
+    {/* Elemento Futuro */}
+    <div class="desktop-timeline-item future-desktop-item is-dimmed" data-index={timeline.length}>
+      <div class="desktop-year-col">
+        <div class="desktop-year-bubble" style="--bubble-color: #20202000;">
+          <span class="desktop-year-text">¯\_(ツ)_/¯</span>
+        </div>
+      </div>
+
+      <div class="desktop-connector-wrapper">
+        <div class="desktop-connector-line future-connector" />
+      </div>
+
+      <div class="desktop-card-col">
+        <div class="timeline-future-text">
+          {futureText}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initDesktopTimeline() {
+    const items = document.querySelectorAll<HTMLElement>('.desktop-timeline-item');
+    if (!items.length) return;
+
+    let isTicking = false;
+
+    function updateActiveItem() {
+      // Línea focal para determinar el año activo al hacer scroll
+      const focalY = window.innerHeight * 0.55;
+
+      let closestItem: HTMLElement | null = null;
+      let minDistance = Infinity;
+
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(itemCenter - focalY);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      if (closestItem) {
+        items.forEach((item) => {
+          if (item === closestItem) {
+            item.classList.add('is-active');
+            item.classList.remove('is-dimmed');
+          } else {
+            item.classList.remove('is-active');
+            item.classList.add('is-dimmed');
+          }
+        });
+      }
+
+      isTicking = false;
+    }
+
+    function onScroll() {
+      if (!isTicking) {
+        window.requestAnimationFrame(updateActiveItem);
+        isTicking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateActiveItem();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDesktopTimeline);
+  } else {
+    initDesktopTimeline();
+  }
+  document.addEventListener('astro:page-load', initDesktopTimeline);
+</script>
+
+<style>
+  .desktop-timeline-section {
+    margin-bottom: 6rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .timeline-section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    text-align: center;
+  }
+
+  .timeline-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-theme-a), transparent);
+  }
+
+  .desktop-timeline-wrapper {
+    --year-col-width: 85px;
+    --connector-width: 48px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 840px;
+    padding: 0 1rem;
+    position: relative;
+  }
+
+  /* Línea vertical continua e ininterrumpida de fondo */
+  .desktop-timeline-wrapper::before {
+    content: '';
+    position: absolute;
+    left: calc(1rem + (var(--year-col-width) / 2));
+    top: 2rem;
+    bottom: 2rem;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.18) 20%,
+      rgba(255, 255, 255, 0.18) 80%,
+      rgba(255, 255, 255, 0.05)
+    );
+    z-index: 1;
+  }
+
+  /* Cada fila del timeline */
+  .desktop-timeline-item {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+    padding-bottom: 2.25rem;
+  }
+
+  .desktop-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .future-desktop-item {
+    align-items: center;
+  }
+
+  /* Columna del Año (Izquierda) */
+  .desktop-year-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--year-col-width);
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+  }
+
+  /* Línea de resplandor activa en el eje vertical */
+  .desktop-year-active-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, transparent, var(--item-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .desktop-timeline-item.is-active .desktop-year-active-line {
+    opacity: 1;
+    box-shadow: 0 0 22px 2px color-mix(in srgb, var(--item-color) 5%, transparent);
+  }
+
+  /* Burbuja del Año */
+  .desktop-year-bubble {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    background: #090d16;
+    border: 1.5px solid var(--border-color);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.45s ease,
+                background-color 0.45s ease,
+                box-shadow 0.45s ease,
+                opacity 0.45s ease;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .desktop-year-text {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    transition: color 0.35s ease;
+  }
+
+  /* Burbuja inactiva / atenuada */
+  .desktop-timeline-item.is-dimmed .desktop-year-bubble {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  /* Burbuja activa */
+  .desktop-timeline-item.is-active .desktop-year-bubble {
+    opacity: 1;
+    border-color: var(--bubble-color);
+    background-color: color-mix(in srgb, var(--bubble-color) 22%, #090d16);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--bubble-color) 25%, transparent),
+                0 4px 14px rgba(0, 0, 0, 0.7);
+    transform: translate(-50%, -50%) scale(1.15);
+    z-index: 6;
+  }
+
+  .desktop-timeline-item.is-active .desktop-year-bubble .desktop-year-text {
+    color: #ffffff;
+  }
+
+  /* Conector horizontal intermedio */
+  .desktop-connector-wrapper {
+    display: flex;
+    align-items: center;
+    width: var(--connector-width);
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+  }
+
+  .desktop-connector-line {
+    position: absolute;
+    top: 50%;
+    left: -15px; /* Comienza bajo la burbuja para evitar cualquier hueco */
+    right: 0;    /* Llega exactamente al borde de la tarjeta */
+    height: 2px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.12);
+    transition: background 0.45s ease, box-shadow 0.45s ease, opacity 0.45s ease, height 0.45s ease;
+    z-index: 3;
+  }
+
+  .desktop-timeline-item.is-dimmed .desktop-connector-line {
+    opacity: 0.25;
+  }
+
+  .desktop-timeline-item.is-active .desktop-connector-line {
+    opacity: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--line-color), color-mix(in srgb, var(--line-color) 75%, #ffffff));
+    box-shadow: 0 0 22px 4px color-mix(in srgb, var(--line-color) 30%, transparent);
+    z-index: 4;
+  }
+
+  .future-connector {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), transparent);
+  }
+
+  /* Columna Derecha de la Tarjeta */
+  .desktop-card-col {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-timeline-card {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.4rem 1.85rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.45s ease,
+                box-shadow 0.45s ease,
+                filter 0.45s ease;
+    transform-origin: center left;
+  }
+
+  /* Estado Atenuado / Inactivo (sin hover) */
+  .desktop-timeline-item.is-dimmed .desktop-timeline-card {
+    opacity: 0.35;
+    transform: scale(0.95);
+    filter: brightness(0.85);
+  }
+
+  /* Estado Activo / Enfocado */
+  .desktop-timeline-item.is-active .desktop-timeline-card {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1);
+    border-color: var(--item-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 25px color-mix(in srgb, var(--item-color) 22%, transparent);
+    z-index: 10;
+  }
+
+  .timeline-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+    color: var(--text-main);
+  }
+
+  .timeline-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  .timeline-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+  }
+
+  .timeline-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .timeline-card-link:hover {
+    color: #ffffff;
+    background: color-mix(in srgb, var(--link-color) 20%, transparent);
+    border-color: var(--link-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--link-color) 25%, transparent);
+  }
+
+  .link-icon {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    min-width: 12px;
+  }
+
+  .timeline-card-link:hover .link-icon {
+    opacity: 1;
+  }
+
+  .highlighted-timeline-card {
+    border-color: rgba(14, 165, 233, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .live-pulse {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 9px;
+    height: 9px;
+    background-color: var(--pulse-color);
+    border-radius: 50%;
+  }
+
+  .live-pulse::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--pulse-color);
+    border-radius: 50%;
+    animation: pulseGlow 1.8s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+  }
+
+  .timeline-future-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0;
+    background: linear-gradient(135deg, var(--text-muted) 30%, rgba(255, 255, 255, 0.4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shineText 3s infinite alternate;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .desktop-timeline-item.is-dimmed .timeline-future-text {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+
+  .desktop-timeline-item.is-active .timeline-future-text {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+</style>
