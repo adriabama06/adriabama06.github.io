@@ -180,6 +180,10 @@ export const translations: Record<Lang, {
         title: "1st Year of ESO — Minecraft Networks & Servers",
         content: "I independently created my own Minecraft network. Through this project, I learned about internet architecture, DNS, Java version management, Java plugin development, server interconnection using BungeeCord as a proxy, and relational databases with MySQL and MariaDB.",
         color: "#a855f7",
+        links: [
+          { text: "Video about my Minecraft network", url: "https://www.youtube.com/watch?v=u73bc2WvQ6A" },
+          { text: "muisc-bot-discord.js-v12", url: "https://github.com/adriabama06/muisc-bot-discord.js-v12" }
+        ],
         year: 2020
       },
       {
@@ -218,18 +222,30 @@ export const translations: Record<Lang, {
         title: "4th Year of ESO — C/C++ & Weather Station",
         content: "I learned to program in C and C++. I created an image-to-ASCII converter in pure C, using only the standard library. Additionally, for our 4th-year \"mini-research project\", I built a physical weather station using Arduino boards, sensors, and a 3D printer to design and manufacture its housing.",
         color: "#3b82f6",
+        links: [
+          { text: "image-to-ascii", url: "https://github.com/adriabama06/image-to-ascii" },
+          { text: "image-to-ascii-cpp", url: "https://github.com/adriabama06/image-to-ascii-cpp" },
+          { text: "EstacioMeteorologica", url: "https://github.com/adriabama06/EstacioMeteorologica" }
+        ],
         year: 2023
       },
       {
         title: "1st Year of Bachillerato — Algorithms & Olympiads",
         content: "During the summer transition from 4th of ESO to Bachillerato, I attended the UPC algorithms summer course at the Faculty of Mathematics and Statistics (FME). This inspired me to register for OICAT (Catalan Computer Olympiad), where, with barely any prior experience in competitive programming and being my first year, I ranked 15th out of 31 finalists.",
         color: "#3b82f6",
+        links: [
+          { text: "Algorithms summer course at the Faculty of Mathematics and Statistics", url: "https://algoprog.jutge.org/" },
+          { text: "Computer Olympiad", url: "https://olimpiada-informatica.cat/oicat-2024/" }
+        ],
         year: 2023
       },
       {
         title: "2nd Year of Bachillerato — School Chatbot TR",
         content: "I conducted my research project (Treball de Recerca) on building an intelligent chatbot for my school over the summer. It was a massive technical challenge: ChatGPT 3.5 had been released barely a year prior, the LLM ecosystem was extremely early, and Llama 3 was released just as I was finishing the codebase.",
         color: "#14b8a6",
+        links: [
+          { text: "chatbot-tr-2024", url: "https://github.com/adriabama06/chatbot-tr-2024-monorepo" }
+        ],
         year: 2025
       },
       {
@@ -237,9 +253,11 @@ export const translations: Record<Lang, {
         content: "After finishing college entrance exams, I spent the summer creating and contributing to multiple open-source projects: developed a pure C library without STD to read/write .bmp files; created auto-video-translator for video translation/dubbing; programmed ffmpeg-version-manager to easily manage FFmpeg builds on Windows/Linux; contributed scaling options to REAL-Video-Enhancer; and containerized advanced tools using Docker, including MiniCPM-o, whisper.cpp-server, SCP Secret Laboratory, Practical-RIFE, RIFE-FixDropFrames, docker-canary-serve-v2 (featuring NVIDIA's Canary V2), Qwen3-TTS, SUPIR-extended, MultiPassDedup, and whisper-webui-custom-server.",
         color: "#14b8a6",
         links: [
+          { text: "libabmp", url: "https://github.com/adriabama06/libabmp" },
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
-          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" }
+          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" },
+          { text: "Dockers...", url: "https://github.com/adriabama06?tab=repositories&q=Docker" }
         ],
         year: 2025
       },
@@ -292,6 +310,10 @@ export const translations: Record<Lang, {
         title: "1r d'ESO — Xarxes i Servidors de Minecraft",
         content: "Vaig crear la meva pròpia xarxa de Minecraft de forma independent. Durant aquest projecte, vaig aprendre sobre el funcionament d'Internet, DNS, control de versions de Java, desenvolupament de plugins en Java, interconnexió de servidors utilitzant BungeeCord com a proxy i bases de dades relacionals amb MySQL i MariaDB.",
         color: "#a855f7",
+        links: [
+          { text: "Vídeo sobre la meva xarxa de Minecraft", url: "https://www.youtube.com/watch?v=u73bc2WvQ6A" },
+          { text: "muisc-bot-discord.js-v12", url: "https://github.com/adriabama06/muisc-bot-discord.js-v12" }
+        ],
         year: 2020
       },
       {
@@ -330,18 +352,30 @@ export const translations: Record<Lang, {
         title: "4t d'ESO — C/C++ i Estació Meteorològica",
         content: "Vaig aprendre a programar en C i C++. Vaig crear un conversor d'imatges a ASCII en C pur, utilitzant només la llibreria estàndard. A més, per al \"mini treball de recerca\" de 4t d'ESO, vaig construir una estació meteorològica física utilitzant plaques Arduino, sensors i una impressora 3D per dissenyar i fabricar la carcassa.",
         color: "#3b82f6",
+        links: [
+          { text: "image-to-ascii", url: "https://github.com/adriabama06/image-to-ascii" },
+          { text: "image-to-ascii-cpp", url: "https://github.com/adriabama06/image-to-ascii-cpp" },
+          { text: "EstacioMeteorologica", url: "https://github.com/adriabama06/EstacioMeteorologica" }
+        ],
         year: 2023
       },
       {
         title: "1r de Batxillerat — Algorísmia i Olimpíades",
         content: "Durant l'estiu de transició de 4t d'ESO a Batxillerat, vaig assistir al curs d'estiu d'algorísmia de la UPC a la Facultat de Matemàtiques i Estadística (FME). Aquesta experiència em va motivar a inscriure'm a l'OICAT (Olimpíada Informàtica de Catalunya) on, amb molt poc bagatge en algorísmia i sent el meu primer any, vaig aconseguir quedar en la posició 15 de 31 finalistes.",
         color: "#3b82f6",
+        links: [
+          { text: "Curs d'estiu d'algorísmia a la Facultat de Matemàtiques i Estadística", url: "https://algoprog.jutge.org/" },
+          { text: "Olimpíada Informàtica", url: "https://olimpiada-informatica.cat/oicat-2024/" }
+        ],
         year: 2023
       },
       {
         title: "2n de Batxillerat — Chatbot per a l'Institut",
         content: "Vaig dur a terme el meu Treball de Recerca (TR) sobre la creació d'un chatbot intel·ligent per al meu institut, el qual vaig desenvolupar durant l'estiu. Va ser un repte tècnic majúscul: feia tot just un any del llançament de ChatGPT 3.5 i l'ecosistema d'IA generativa estava molt verd; de fet, Llama 3 es va llançar quan estava enllestint el codi del projecte.",
         color: "#14b8a6",
+        links: [
+          { text: "chatbot-tr-2024", url: "https://github.com/adriabama06/chatbot-tr-2024-monorepo" }
+        ],
         year: 2025
       },
       {
@@ -349,9 +383,11 @@ export const translations: Record<Lang, {
         content: "Després d'acabar els exàmens de selectivitat, vaig dedicar l'estiu a crear i contribuir a múltiples projectes de codi obert: vaig desenvolupar una llibreria en C pur sense STD per llegir/escriure fitxers .bmp; vaig crear auto-video-translator per traduir i doblar vídeos; vaig programar ffmpeg-version-manager per gestionar fàcilment les versions de FFmpeg a Windows/Linux; vaig col·laborar a REAL-Video-Enhancer afegint-hi noves opcions d'escalat; i vaig encapsular en contenidors Docker diverses eines avançades com MiniCPM-o, whisper.cpp-server, SCP Secret Laboratory, Practical-RIFE, RIFE-FixDropFrames, docker-canary-serve-v2 (amb suport per a Canary V2 de NVIDIA), Qwen3-TTS, SUPIR-extended, MultiPassDedup i whisper-webui-custom-server.",
         color: "#14b8a6",
         links: [
+          { text: "libabmp", url: "https://github.com/adriabama06/libabmp" },
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
           { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
-          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" }
+          { text: "REAL-Video-Enhancer", url: "https://github.com/TNTwise/REAL-Video-Enhancer" },
+          { text: "Dockers...", url: "https://github.com/adriabama06?tab=repositories&q=Docker" }
         ],
         year: 2025
       },
