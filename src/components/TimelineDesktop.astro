@@ -9,41 +9,67 @@ interface Props {
 }
 
 const { timelineTitle, timeline, futureText } = Astro.props;
+
+const processedTimeline = timeline.map((item, index) => {
+  const prevItem = timeline[index - 1];
+  const nextItem = timeline[index + 1];
+  const isFirstInYear = !prevItem || prevItem.year !== item.year;
+  const isSubitem = !isFirstInYear;
+  const isLastInYear = !nextItem || nextItem.year !== item.year;
+  const isLast = index === timeline.length - 1;
+
+  return {
+    ...item,
+    index,
+    isFirstInYear,
+    isSubitem,
+    isLastInYear,
+    isLast,
+  };
+});
 ---
 
 <section class="desktop-timeline-section">
   <h2 class="timeline-section-title">{timelineTitle}</h2>
 
   <div class="desktop-timeline-wrapper" id="desktopTimelineWrapper">
-    {timeline.map((item, index) => {
-      const isLast = index === timeline.length - 1;
-
+    {processedTimeline.map((item) => {
       return (
         <div 
-          class={`desktop-timeline-item ${index === 0 ? 'is-active' : 'is-dimmed'}`}
-          data-index={index}
+          class={`desktop-timeline-item ${item.index === 0 ? 'is-active' : 'is-dimmed'} ${item.isSubitem ? 'is-subitem' : ''} ${item.isLastInYear ? 'is-last-in-year' : ''}`}
+          data-index={item.index}
+          data-year={item.year}
           style={`--item-color: ${item.color};`}
         >
-          {/* Columna Izquierda: Año y Línea vertical */}
+          {/* Columna Izquierda: Año y Línea vertical (solo si es el primero del año) */}
           <div class="desktop-year-col">
-            <div class="desktop-year-active-line" />
-            <div 
-              class="desktop-year-bubble"
-              style={`--bubble-color: ${item.color};`}
-            >
-              <span class="desktop-year-text">{item.year}</span>
-            </div>
+            {item.isFirstInYear && (
+              <>
+                <div class="desktop-year-active-line" />
+                <div 
+                  class="desktop-year-bubble"
+                  style={`--bubble-color: ${item.color};`}
+                >
+                  <span class="desktop-year-text">{item.year}</span>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* Conector horizontal: une la burbuja con la tarjeta */}
+          {/* Conector horizontal: une la burbuja con la tarjeta (solo si es el primero del año) */}
           <div class="desktop-connector-wrapper">
-            <div class="desktop-connector-line" style={`--line-color: ${item.color};`} />
+            {item.isFirstInYear && (
+              <div class="desktop-connector-line" style={`--line-color: ${item.color};`} />
+            )}
           </div>
 
           {/* Columna Derecha: Tarjeta de contenido */}
           <div class="desktop-card-col">
-            <div class={`desktop-timeline-card ${isLast ? 'highlighted-timeline-card' : ''}`}>
-              {isLast && (
+            <div class={`desktop-timeline-card ${item.isLast ? 'highlighted-timeline-card' : ''}`}>
+              {!item.isLastInYear && (
+                <div class="desktop-subitem-connector-down" style={`--sub-color: ${item.color};`} />
+              )}
+              {item.isLast && (
                 <div class="live-pulse" style={`--pulse-color: ${item.color};`} />
               )}
               <h3 class="timeline-card-title">{item.title}</h3>
@@ -117,13 +143,30 @@ const { timelineTitle, timeline, futureText } = Astro.props;
       });
 
       if (closestItem) {
+        const activeYear = (closestItem as HTMLElement).dataset.year;
+        const activeColor = (closestItem as HTMLElement).style.getPropertyValue('--item-color');
+
         items.forEach((item) => {
-          if (item === closestItem) {
+          const sameYear = !!item.dataset.year && item.dataset.year === activeYear;
+          const isYearActive = item === closestItem || sameYear;
+
+          if (isYearActive) {
             item.classList.add('is-active');
             item.classList.remove('is-dimmed');
           } else {
             item.classList.remove('is-active');
             item.classList.add('is-dimmed');
+          }
+
+          // Mantener la burbuja del año activa si un subitem de ese año está activo
+          if (item.dataset.year && item.dataset.year === activeYear && !item.classList.contains('is-subitem')) {
+            item.classList.add('is-year-active');
+            if (activeColor) {
+              item.style.setProperty('--current-active-color', activeColor);
+            }
+          } else {
+            item.classList.remove('is-year-active');
+            item.style.removeProperty('--current-active-color');
           }
         });
       }
@@ -183,6 +226,8 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .desktop-timeline-wrapper {
     --year-col-width: 85px;
     --connector-width: 48px;
+    --item-gap: 2.25rem;
+    --connector-len: calc(var(--item-gap));
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -216,7 +261,12 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     align-items: stretch;
     width: 100%;
     position: relative;
-    padding-bottom: 2.25rem;
+    padding-bottom: var(--item-gap);
+  }
+
+  /* Cuando el elemento pertenece al mismo año que el siguiente, usar un espaciado más compacto */
+  .desktop-timeline-item:not(.is-last-in-year):not(.future-desktop-item) {
+    padding-bottom: calc(var(--item-gap) / 2);
   }
 
   .desktop-timeline-item:last-child {
@@ -246,15 +296,16 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     left: 50%;
     width: 3px;
     transform: translateX(-50%);
-    background: linear-gradient(to bottom, transparent, var(--item-color), transparent);
+    background: linear-gradient(to bottom, transparent, var(--current-active-color, var(--item-color)), transparent);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 2;
   }
 
-  .desktop-timeline-item.is-active .desktop-year-active-line {
+  .desktop-timeline-item.is-active .desktop-year-active-line,
+  .desktop-timeline-item.is-year-active .desktop-year-active-line {
     opacity: 1;
-    box-shadow: 0 0 22px 2px color-mix(in srgb, var(--item-color) 5%, transparent);
+    box-shadow: 0 0 22px 2px color-mix(in srgb, var(--current-active-color, var(--item-color)) 5%, transparent);
   }
 
   /* Burbuja del Año */
@@ -289,23 +340,25 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   }
 
   /* Burbuja inactiva / atenuada */
-  .desktop-timeline-item.is-dimmed .desktop-year-bubble {
+  .desktop-timeline-item.is-dimmed:not(.is-year-active) .desktop-year-bubble {
     opacity: 0.4;
     transform: translate(-50%, -50%) scale(0.92);
   }
 
   /* Burbuja activa */
-  .desktop-timeline-item.is-active .desktop-year-bubble {
+  .desktop-timeline-item.is-active .desktop-year-bubble,
+  .desktop-timeline-item.is-year-active .desktop-year-bubble {
     opacity: 1;
-    border-color: var(--bubble-color);
-    background-color: color-mix(in srgb, var(--bubble-color) 22%, #090d16);
-    box-shadow: 0 0 24px color-mix(in srgb, var(--bubble-color) 25%, transparent),
+    border-color: var(--current-active-color, var(--bubble-color));
+    background-color: color-mix(in srgb, var(--current-active-color, var(--bubble-color)) 22%, #090d16);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--current-active-color, var(--bubble-color)) 25%, transparent),
                 0 4px 14px rgba(0, 0, 0, 0.7);
     transform: translate(-50%, -50%) scale(1.15);
     z-index: 6;
   }
 
-  .desktop-timeline-item.is-active .desktop-year-bubble .desktop-year-text {
+  .desktop-timeline-item.is-active .desktop-year-bubble .desktop-year-text,
+  .desktop-timeline-item.is-year-active .desktop-year-bubble .desktop-year-text {
     color: #ffffff;
   }
 
@@ -328,7 +381,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.12);
     transition: background 0.45s ease, box-shadow 0.45s ease, opacity 0.45s ease, height 0.45s ease;
-    z-index: 3;
+    z-index: 2;
   }
 
   .desktop-timeline-item.is-dimmed .desktop-connector-line {
@@ -340,7 +393,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     height: 2px;
     background: linear-gradient(90deg, var(--line-color), color-mix(in srgb, var(--line-color) 75%, #ffffff));
     box-shadow: 0 0 22px 4px color-mix(in srgb, var(--line-color) 30%, transparent);
-    z-index: 4;
+    z-index: 2;
   }
 
   .future-connector {
@@ -353,9 +406,32 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     min-width: 0;
     display: flex;
     align-items: center;
+    position: relative;
+  }
+
+  /* Conectores verticales para elementos del mismo año (anclados a la tarjeta superior) */
+  .desktop-subitem-connector-down {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 2.25rem;
+    width: 2px;
+    height: calc(var(--connector-len) - 2px);
+    background: rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+    transition: background 0.45s ease, box-shadow 0.45s ease,
+                height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+
+  .desktop-timeline-item.is-active .desktop-subitem-connector-down {
+    background: var(--sub-color, var(--item-color));
+    box-shadow: 0 0 16px 2px color-mix(in srgb, var(--sub-color, var(--item-color)) 40%, transparent);
+    height: calc((var(--connector-len) / 2) + 1px);
   }
 
   .desktop-timeline-card {
+    position: relative;
+    z-index: 3;
     width: 100%;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -477,6 +553,8 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   }
 
   .timeline-future-text {
+    position: relative;
+    z-index: 3;
     font-size: 1.05rem;
     font-weight: 600;
     font-style: italic;
