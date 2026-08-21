@@ -33,7 +33,10 @@ const { timelineTitle, timeline, futureText } = Astro.props;
         : `color-mix(in srgb, ${item.color} 50%, transparent 50%)`;
 
       return (
-        <div class="timeline-item">
+        <div 
+          class={`timeline-item ${index === 0 ? 'is-active' : 'is-dimmed'}`}
+          data-index={index}
+        >
           <div class="timeline-track">
             {/* Línea superior: desde el borde de arriba de la tarjeta hasta el centro del punto */}
             {index > 0 && (
@@ -87,7 +90,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     })}
 
     {/* Standalone Future Item */}
-    <div class="timeline-item future-item">
+    <div class="timeline-item future-item is-dimmed" data-index={timeline.length}>
       <div class="timeline-track">
         {/* La línea del futuro completa el degradado final mezclándose perfectamente con transparente */}
         <div 
@@ -102,6 +105,66 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  function initMobileTimeline() {
+    const items = document.querySelectorAll<HTMLElement>('.timeline-wrapper .timeline-item');
+    if (!items.length) return;
+
+    let isTicking = false;
+
+    function updateActiveItem() {
+      // Línea focal para determinar el elemento activo al hacer scroll
+      const focalY = window.innerHeight * 0.55;
+
+      let closestItem: HTMLElement | null = null;
+      let minDistance = Infinity;
+
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(itemCenter - focalY);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      if (closestItem) {
+        items.forEach((item) => {
+          if (item === (closestItem as HTMLElement)) {
+            item.classList.add('is-active');
+            item.classList.remove('is-dimmed');
+          } else {
+            item.classList.remove('is-active');
+            item.classList.add('is-dimmed');
+          }
+        });
+      }
+
+      isTicking = false;
+    }
+
+    function onScroll() {
+      if (!isTicking) {
+        window.requestAnimationFrame(updateActiveItem);
+        isTicking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateActiveItem();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileTimeline);
+  } else {
+    initMobileTimeline();
+  }
+  document.addEventListener('astro:page-load', initMobileTimeline);
+</script>
 
 <style>
   .timeline-section {
@@ -154,6 +217,11 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .future-item {
     --item-padding: 0px;
     align-items: center;
+    transition: opacity 0.45s ease;
+  }
+
+  .future-item.is-dimmed {
+    opacity: 0.4;
   }
 
   .timeline-track {
@@ -175,11 +243,15 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     border-radius: 50%;
     border: 3px solid var(--border-color);
     z-index: 10;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   }
 
-  .timeline-item:has(.timeline-card:hover) .timeline-dot:not(.future-dot) {
+  .timeline-item.is-active .timeline-dot:not(.future-dot) {
     transform: translateY(-50%) scale(1.25);
+  }
+
+  .timeline-item.is-dimmed .timeline-dot {
+    opacity: 0.35;
   }
 
   .timeline-line-top {
@@ -207,12 +279,23 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.45s ease,
+                box-shadow 0.45s ease,
+                filter 0.45s ease;
   }
 
-  .timeline-card:hover {
+  .timeline-item.is-active .timeline-card {
     transform: translateX(6px);
     border-color: var(--item-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),
+                0 0 22px color-mix(in srgb, var(--item-color) 20%, transparent);
+  }
+
+  .timeline-item.is-dimmed .timeline-card {
+    opacity: 0.35;
+    filter: brightness(0.85);
   }
 
   .timeline-card-links {
@@ -259,10 +342,6 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     border-color: rgba(14, 165, 233, 0.3);
     position: relative;
     overflow: hidden;
-  }
-
-  .highlighted-timeline-card:hover {
-    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
   }
 
   .live-pulse {
