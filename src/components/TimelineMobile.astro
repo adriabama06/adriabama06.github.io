@@ -63,6 +63,9 @@ const { timelineTitle, timeline, futureText } = Astro.props;
             class={`timeline-card ${index === timeline.length - 1 ? 'highlighted-timeline-card' : ''}`}
             style={`--item-color: ${item.color};`}
           >
+            <div class="timeline-year-bubble">
+              <span class="timeline-year-text">{item.year}</span>
+            </div>
             {index === timeline.length - 1 && (
               <div class="live-pulse" style={`--pulse-color: ${item.color};`} />
             )}
@@ -276,6 +279,7 @@ const { timelineTitle, timeline, futureText } = Astro.props;
     border-radius: 14px;
     padding: 1.25rem 1.75rem;
     flex-grow: 1;
+    position: relative;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -284,6 +288,51 @@ const { timelineTitle, timeline, futureText } = Astro.props;
                 border-color 0.45s ease,
                 box-shadow 0.45s ease,
                 filter 0.45s ease;
+  }
+
+  .timeline-year-bubble {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    transform: translateY(-20%) scale(0.85);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: #090d16;
+    border: 1.5px solid var(--border-color);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    user-select: none;
+    white-space: nowrap;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s ease,
+                background-color 0.45s ease,
+                border-color 0.45s ease,
+                box-shadow 0.45s ease;
+  }
+
+  .timeline-year-text {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    position: relative;
+    top: -0.5px;
+    transition: color 0.35s ease;
+  }
+
+  .timeline-item.is-active .timeline-year-bubble {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    border-color: var(--item-color);
+    background-color: color-mix(in srgb, var(--item-color) 22%, #090d16);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--item-color) 30%, transparent),
+                0 4px 14px rgba(0, 0, 0, 0.7);
+  }
+
+  .timeline-item.is-active .timeline-year-bubble .timeline-year-text {
+    color: #ffffff;
   }
 
   .timeline-item.is-active .timeline-card {
@@ -341,7 +390,6 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .highlighted-timeline-card {
     border-color: rgba(14, 165, 233, 0.3);
     position: relative;
-    overflow: hidden;
   }
 
   .live-pulse {
@@ -380,31 +428,6 @@ const { timelineTitle, timeline, futureText } = Astro.props;
   .timeline-card-desc {
     font-size: 0.85rem;
     color: var(--text-muted);
-  }
-
-  .timeline-card-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-  }
-
-  .timeline-link {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .timeline-link:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--item-color);
-    color: var(--item-color);
   }
 
   .future-dot {
