@@ -133,11 +133,14 @@ export const translations: Record<Lang, {
       },
       {
         title: "Grado en Ingeniería Informática (FIB - UPC)",
-        content: "Actualmente estoy cursando mi segundo año en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Durante el primer año me centré intensamente en los estudios para superar con éxito la exigente fase selectiva (los dos primeros cuatrimestres). En el plano personal, he continuado optimizando y manteniendo ffmpeg-version-manager y auto-video-translator, además de desarrollar bdayme, una aplicación privada cuyo código publicaré próximamente.",
+        content: "Actualmente estoy cursando mi segundo año en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Durante el primer año me centré intensamente en los estudios para superar con éxito la exigente fase selectiva (los dos primeros cuatrimestres). En el plano personal, he continuado optimizando y manteniendo ffmpeg-version-manager y auto-video-translator, además de desarrollar bdayme, una aplicación web para no olvidar nunca los cumpleaños de tus amigos, con sistema de cuentas y amigos, cuyo código es público y está desplegada en producción.",
         color: "#10b981",
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
-          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
+          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
+          { text: "bdayme-web-app", url: "https://github.com/adriabama06/bdayme-web-app" },
+          { text: "bdayme-server", url: "https://github.com/adriabama06/bdayme-server" },
+          { text: "bdayme.duckdns.org", url: "https://bdayme.duckdns.org/" }
         ],
         year: 2026
       }
@@ -263,11 +266,14 @@ export const translations: Record<Lang, {
       },
       {
         title: "B.S. in Computer Engineering (FIB - UPC)",
-        content: "I am currently pursuing my second year at the Facultat d'Informàtica de Barcelona (FIB) of the Universitat Politècnica de Catalunya. During the first year, I focused heavily on academic work to successfully pass the demanding UPC selective phase (first two semesters). Personally, I have continued maintaining and optimizing ffmpeg-version-manager and auto-video-translator, alongside developing bdayme, a private application whose code I will publish soon.",
+        content: "I am currently pursuing my second year at the Facultat d'Informàtica de Barcelona (FIB) of the Universitat Politècnica de Catalunya. During the first year, I focused heavily on academic work to successfully pass the demanding UPC selective phase (first two semesters). Personally, I have continued maintaining and optimizing ffmpeg-version-manager and auto-video-translator, alongside developing bdayme, a web application to never forget your friends' birthdays, featuring an account and friends system, whose code is now public and which is deployed in production.",
         color: "#10b981",
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
-          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
+          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
+          { text: "bdayme-web-app", url: "https://github.com/adriabama06/bdayme-web-app" },
+          { text: "bdayme-server", url: "https://github.com/adriabama06/bdayme-server" },
+          { text: "bdayme.duckdns.org", url: "https://bdayme.duckdns.org/" }
         ],
         year: 2026
       }
@@ -393,11 +399,14 @@ export const translations: Record<Lang, {
       },
       {
         title: "Grau en Enginyeria Informàtica (FIB - UPC)",
-        content: "Actualment estic cursant el meu segon any a la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Durant el primer any em vaig centrar intensament en els estudis acadèmics per superar amb èxit l'exigent fase selectiva (els dos primers quadrimestres). En l'àmbit personal, he continuat optimitzant i mantenint ffmpeg-version-manager i auto-video-translator, a més de desenvolupar bdayme, una aplicació privada el codi de la qual publicaré properament.",
+        content: "Actualment estic cursant el meu segon any a la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya. Durant el primer any em vaig centrar intensament en els estudis acadèmics per superar amb èxit l'exigent fase selectiva (els dos primers quadrimestres). En l'àmbit personal, he continuat optimitzant i mantenint ffmpeg-version-manager i auto-video-translator, a més de desenvolupar bdayme, una aplicació web per no oblidar mai els aniversaris dels teus amics, amb sistema de comptes i amics, el codi de la qual és públic i està desplegada en producció.",
         color: "#10b981",
         links: [
           { text: "auto-video-translator", url: "https://github.com/adriabama06/auto-video-translator" },
-          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" }
+          { text: "ffmpeg-version-manager", url: "https://github.com/adriabama06/ffmpeg-version-manager" },
+          { text: "bdayme-web-app", url: "https://github.com/adriabama06/bdayme-web-app" },
+          { text: "bdayme-server", url: "https://github.com/adriabama06/bdayme-server" },
+          { text: "bdayme.duckdns.org", url: "https://bdayme.duckdns.org/" }
         ],
         year: 2026
       }
