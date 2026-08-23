@@ -24,6 +24,17 @@ export const repos: Repo[] = [
     }
   },
   {
+    title: "bdayme",
+    url: "https://github.com/adriabama06/bdayme-web-app",
+    image: "/images/repos/bdayme.avif",
+    tags: ["TypeScript", "React", "Node.js", "Express", "PostgreSQL", "Redis", "Docker"],
+    descriptions: {
+      es: "Aplicación web full-stack para no olvidar nunca los cumpleaños de tus amigos: crea tu perfil, añade amigos mediante código o QR y mira cuánto queda para cada cumpleaños. Desarrollada como dos proyectos de código abierto (frontend en React + TypeScript y backend con API REST en Express, PostgreSQL y Redis), desplegada con Docker Compose y cubierta por tests unitarios, de API y E2E.",
+      en: "Full-stack web application to never forget your friends' birthdays: create your profile, add friends via code or QR, and see how long is left until each birthday. Developed as two open-source projects (a React + TypeScript frontend and an Express REST API backend with PostgreSQL and Redis), deployed with Docker Compose and covered by unit, API, and E2E tests.",
+      ca: "Aplicació web full-stack per no oblidar mai els aniversaris dels teus amics: crea el teu perfil, afegeix amics mitjançant codi o QR i mira quant queda per a cada aniversari. Desenvolupada com a dos projectes de codi obert (un frontend en React + TypeScript i un backend amb API REST a Express, PostgreSQL i Redis), desplegada amb Docker Compose i coberta per tests unitaris, d'API i E2E."
+    }
+  },
+  {
     title: "EstacioMeteorologica",
     url: "https://github.com/adriabama06/EstacioMeteorologica",
     image: "/images/repos/EstacioMeteorologica.avif",
