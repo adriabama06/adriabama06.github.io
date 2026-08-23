@@ -24,7 +24,7 @@ export const repos: Repo[] = [
     }
   },
   {
-    title: "bdayme",
+    title: "bdayme-web-app",
     url: "https://github.com/adriabama06/bdayme-web-app",
     image: "/images/repos/bdayme.avif",
     tags: ["TypeScript", "React", "React Router", "CSS", "Docker", "Nginx"],
