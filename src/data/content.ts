@@ -27,11 +27,22 @@ export const repos: Repo[] = [
     title: "bdayme",
     url: "https://github.com/adriabama06/bdayme-web-app",
     image: "/images/repos/bdayme.avif",
-    tags: ["TypeScript", "React", "Node.js", "Express", "PostgreSQL", "Redis", "Docker"],
+    tags: ["TypeScript", "React", "React Router", "CSS", "Docker", "Nginx"],
     descriptions: {
-      es: "Aplicación web full-stack para no olvidar nunca los cumpleaños de tus amigos: crea tu perfil, añade amigos mediante código o QR y mira cuánto queda para cada cumpleaños. Desarrollada como dos proyectos de código abierto (frontend en React + TypeScript y backend con API REST en Express, PostgreSQL y Redis), desplegada con Docker Compose y cubierta por tests unitarios, de API y E2E.",
-      en: "Full-stack web application to never forget your friends' birthdays: create your profile, add friends via code or QR, and see how long is left until each birthday. Developed as two open-source projects (a React + TypeScript frontend and an Express REST API backend with PostgreSQL and Redis), deployed with Docker Compose and covered by unit, API, and E2E tests.",
-      ca: "Aplicació web full-stack per no oblidar mai els aniversaris dels teus amics: crea el teu perfil, afegeix amics mitjançant codi o QR i mira quant queda per a cada aniversari. Desenvolupada com a dos projectes de codi obert (un frontend en React + TypeScript i un backend amb API REST a Express, PostgreSQL i Redis), desplegada amb Docker Compose i coberta per tests unitaris, d'API i E2E."
+      es: "Frontend de bdayme, una aplicación web para no olvidar nunca los cumpleaños de tus amigos: crea tu perfil, añade amigos mediante código o QR y mira cuánto queda para cada uno. Construido con React, TypeScript, TailwindCSS y Material UI, con renderizado del lado del servidor mediante React Router.",
+      en: "Frontend of bdayme, a web application to never forget your friends' birthdays: create your profile, add friends via code or QR, and see how long is left until each one. Built with React, TypeScript, TailwindCSS, and Material UI, with server-side rendering via React Router.",
+      ca: "Frontend de bdayme, una aplicació web per no oblidar mai els aniversaris dels teus amics: crea el teu perfil, afegeix amics mitjançant codi o QR i mira quant queda per a cadascun. Construït amb React, TypeScript, TailwindCSS i Material UI, amb renderitzat del costat del servidor mitjançant React Router."
+    }
+  },
+  {
+    title: "bdayme-server",
+    url: "https://github.com/adriabama06/bdayme-server",
+    image: "/images/repos/bdayme.avif",
+    tags: ["JavaScript", "Node.js", "Express", "PostgreSQL", "Redis", "Docker", "Nginx"],
+    descriptions: {
+      es: "Servidor de bdayme, el backend que da vida a la aplicación: una API REST con Express sobre PostgreSQL y Redis (sesiones), servida tras Nginx y desplegada con Docker Compose. Incluye tests unitarios, de API y E2E con el test runner nativo de Node.js.",
+      en: "The bdayme server, the backend powering the application: an Express REST API on top of PostgreSQL and Redis (sessions), served behind Nginx and deployed with Docker Compose. Includes unit, API, and E2E tests using Node.js' built-in test runner.",
+      ca: "El servidor de bdayme, el backend que dona vida a l'aplicació: una API REST amb Express sobre PostgreSQL i Redis (sesions), servida darrere Nginx i desplegada amb Docker Compose. Inclou tests unitaris, d'API i E2E amb el test runner natiu de Node.js."
     }
   },
   {
