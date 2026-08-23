@@ -29,9 +29,9 @@ export const repos: Repo[] = [
     image: "/images/repos/bdayme.avif",
     tags: ["TypeScript", "React", "React Router", "CSS", "Docker", "Nginx"],
     descriptions: {
-      es: "Frontend de bdayme, una aplicación web para no olvidar nunca los cumpleaños de tus amigos: crea tu perfil, añade amigos mediante código o QR y mira cuánto queda para cada uno. Construido con React, TypeScript, TailwindCSS y Material UI, con renderizado del lado del servidor mediante React Router.",
-      en: "Frontend of bdayme, a web application to never forget your friends' birthdays: create your profile, add friends via code or QR, and see how long is left until each one. Built with React, TypeScript, TailwindCSS, and Material UI, with server-side rendering via React Router.",
-      ca: "Frontend de bdayme, una aplicació web per no oblidar mai els aniversaris dels teus amics: crea el teu perfil, afegeix amics mitjançant codi o QR i mira quant queda per a cadascun. Construït amb React, TypeScript, TailwindCSS i Material UI, amb renderitzat del costat del servidor mitjançant React Router."
+      es: "Frontend de bdayme, una aplicación web para no olvidar nunca los cumpleaños de tus amigos: crea tu perfil, añade amigos mediante código o QR y mira cuánto queda para cada uno. Construido con React, TypeScript, CSS y Material UI, con renderizado del lado del servidor mediante React Router.",
+      en: "Frontend of bdayme, a web application to never forget your friends' birthdays: create your profile, add friends via code or QR, and see how long is left until each one. Built with React, TypeScript, CSS, and Material UI, with server-side rendering via React Router.",
+      ca: "Frontend de bdayme, una aplicació web per no oblidar mai els aniversaris dels teus amics: crea el teu perfil, afegeix amics mitjançant codi o QR i mira quant queda per a cadascun. Construït amb React, TypeScript, CSS i Material UI, amb renderitzat del costat del servidor mitjançant React Router."
     }
   },
   {
