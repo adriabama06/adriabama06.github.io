@@ -132,6 +132,17 @@ export const repos: Repo[] = [
       en: "Automated bot built with Mineflayer to collect Elytras from the End. It is self-sufficient enough to equip the gathered Elytras and consume food, allowing it to work uninterrupted for hours.",
       ca: "Bot automatitzat amb Mineflayer per recol·lectar èlitres de l'End. És prou autònom com per equipar-se les èlitres que recull i consumir el seu propi menjar per poder treballar ininterrompudament durant hores."
     }
+  },
+  {
+    title: "chest-teleporter",
+    url: "https://github.com/adriabama06/chest-teleporter",
+    image: "/images/videos/chest-teleporter.avif",
+    tags: ["JavaScript", "Minecraft", "Bot", "Mineflayer"],
+    descriptions: {
+      es: "Sistema de 3 bots que transfiere automáticamente el contenido de cofres entre bases a cualquier distancia mediante stasis chambers coordinadas.",
+      en: "3-bot system that automatically transfers chest contents between bases over any distance using coordinated stasis chambers.",
+      ca: "Sistema de 3 bots que transfereix automàticament el contingut de cofres entre bases a qualsevol distància mitjançant stasis chambers coordinades."
+    }
   }
 ];
 
@@ -344,6 +355,21 @@ export const videos: Video[] = [
       es: "Diseño y desarrollo de un bot automatizado con Mineflayer que vuela por el End de forma autónoma para recolectar todas las élitros de Minecraft.",
       en: "Design and development of an automated bot with Mineflayer that flies autonomously through the End to collect all Elytras in Minecraft.",
       ca: "Disseny i desenvolupament d'un bot automatitzat amb Mineflayer que vola per l'End de manera autònoma per recol·lectar totes les èlitres de Minecraft."
+    }
+  },
+  {
+    title: {
+      es: "Transfiere todos tus cofres de tu base a cualquier distancia con este bot",
+      en: "Transfer all your base's chests over any distance with this bot",
+      ca: "Transfereix tots els cofres de la teva base a qualsevol distància amb aquest bot"
+    },
+    url: "https://www.youtube.com/watch?v=4s0XQ3d_GW8",
+    image: "/images/videos/chest-teleporter.avif",
+    tags: ["Minecraft", "Bot", "Mineflayer", "Automation"],
+    descriptions: {
+      es: "Demostración de un sistema de 3 bots con Mineflayer que traslada cofres enteros entre bases a cualquier distancia con stasis chambers.",
+      en: "Demonstration of a 3-bot Mineflayer system that moves entire chests between bases over any distance using stasis chambers.",
+      ca: "Demostració d'un sistema de 3 bots amb Mineflayer que trasllada cofres sencers entre bases a qualsevol distància amb stasis chambers."
     }
   }
 ];
